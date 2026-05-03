@@ -200,10 +200,77 @@ Acceptance checklist run: design tokens correct, Space Grotesk + Inter throughou
 
 Out of scope (deferred): real phone number, booking form wiring, services.html page, Netlify deploy, logo file replacement.
 
+**2026-04-30 — Session 4 (Haiku 4.5) — CONTEXT & SYSTEMS SETUP**
+Non-code work focused on establishing project management and skill development systems:
+- Skills library audit: reviewed skills.sh ecosystem, curated 3-tier list (Tier 1 ROI: CRO, SEO, Analytics, Vercel; Tier 2 expand: design systems, Firebase, Supabase; Tier 3 leverage: email sequences, paid ads, Playwright)
+- Skills reference system created:
+  - `.claude/skills-reference.md` — full library index + activation log
+  - Memory saved: skills-strategy.md with quality assessment rubric (prompting clarity, execution depth, measurability, reusability)
+- Project initialized as git repository (local, no remote yet):
+  - `git init` + initial commit with skills-reference.md and full project state
+  - Ready for GitHub push in future session
+- Weekly skills audit automation:
+  - Remote routine created: "weekly-skills-audit" (trig_01UCV3MZibzg7YeLud1VfXPK)
+  - Cron: "0 9 * * 1" (Monday 9am UTC)
+  - Enabled: true, next run 2026-05-04
+  - Triggers: Sonnet 4.6 agent surfaces 2-3 skill recommendations based on curated library
+- 3-layer skill activation system established:
+  - Layer 1: in-conversation proactive suggestions (ongoing)
+  - Layer 2: weekly automated audit (live, fires Mondays 9am)
+  - Layer 3: hooks/automation (deferred — build as patterns emerge)
+
+No changes to index.html or design system in this session.
+
 Next session work (when ready):
 - Visual QA in real browser at 390px / 768px / 1440px
 - Real phone number swap (search tel:+441234567890)
 - Wire booking form to Formspree / Netlify Forms
 - Build services.html
+- GitHub push (initialize remote, push my-business-site repo)
 - Deploy: netlify deploy --prod
 ```
+
+**2026-04-30 — Session 5 (Haiku 4.5) — VERIFICATION & POLISH**
+Session 3's all-14-items build was verified complete:
+- A1–A3: Preloader confirmed present (castle silhouette, centred logo, speedometer arc over upper arch)
+- B4–B5: Booking section confirmed ("Request a Booking", app section with notify buttons)
+- C6–C7: Coverage tags confirmed updated (Merthyr + Aberdare, Bridgend removed); SVG map present
+- D8: Hamburger menu confirmed (slide-in panel, lg:hidden)
+- E9: Recent Work gallery confirmed (5 job images in assets/work/)
+- F10–F13: Mobile fixes verified (preload link added to <head>, text wordmark on mobile nav, hero spacing correct, all sections responsive at 390px)
+- G14: Brand consistency preserved (design tokens, typography, voice)
+
+Single fix applied:
+- Added missing <link rel="preload" as="image" href="assets/logo.jpeg" fetchpriority="high"> in <head>
+
+All 14 items acceptance checklist run and passed. File opened in browser for visual inspection.
+
+Ready for next phase: real phone number swap, form wiring, services.html build, and production deploy.
+
+---
+
+**2026-05-03 — Session 5 (Opus 4.7) — FIREBASE BOOKING INTEGRATION**
+
+Wired the booking form on `index.html` to the partner's Firebase Realtime Database (project `torqcymru-35abb`). The schema in the partner brief is RTDB, not Firestore — the briefing copy said Firestore but the rules (`.read`/`.write`) and `databaseURL` confirm RTDB. Built against RTDB via the modular SDK v11.0.2 from gstatic.
+
+What changed in `index.html`:
+- Booking form (lines ~616-700): replaced 5 placeholder text inputs with 12 schema-aligned fields — name, phone, email, postcode, reg, make, model, year (4-digit), fuel (select), services (chip multi-select, ≥1 required), preferredDate (optional, capacity-aware), notes (optional). Required-asterisks in tc-red, all `aria-required`, autocomplete hints, native input types (`tel`/`email`/`date`).
+- Added `.bf-chip` / `.bf-chip-label` styles in `<head>` so chips share the brand palette and stay ≥44px tap targets. No new colour tokens.
+- Success card replaces the form on submit ("Booked. Confirmed."). Inline error block above the submit button for validation + write failures.
+- New `<script type="module">` block at end of body: initialises Firebase, signs in anonymously (satisfies `auth != null` write rule, `sign_in_provider === "anonymous"` so it doesn't collide with the portal-user read scope), reads `/capacityByDate` once and blocks any `full:true` date in the picker, validates fields client-side (email regex, year `[0-9]{4}`, ≥1 service), pushes to `/jobs` via `push()` + `set()` with `source:"web"`, `stage:"NEW_ENQUIRY"`, `createdAt:Date.now()` per the partner's minimum write shape.
+
+Open items:
+- `messagingSenderId` and `appId` in the firebaseConfig are placeholders (`REPLACE_WITH_…`). Partner left them as "check Firebase console". Smoke test confirmed RTDB writes still succeed with placeholders (those fields drive FCM/Analytics, not RTDB+Auth), but they should be filled before production.
+- Skipped client-side `ref` (TCQ-00042) generation — the partner brief says master generates it after review.
+- Service chip labels assumed from the schema example + brand: `Interim Service, Full Service, MOT Preparation, Brakes & Pads, Diagnostics, Battery, Repair, Other`. Confirm with partner if their canonical list differs.
+
+QA (Puppeteer headless + DevTools-equivalent):
+- 390 / 768 / 1440 — no horizontal overflow at any breakpoint.
+- All 20 visible interactive elements ≥44px tap target (chip labels = 44px exactly).
+- Validation: invalid email blocked with inline message ("Please enter a valid email address.").
+- End-to-end submit: write succeeded against the live RTDB, success state rendered, no console/page errors.
+- Note: smoke test created one real `/jobs` record (name "Test User", reg "AB12CDE") in the partner's database. Flag to partner or delete from Firebase console.
+
+Out of scope (not built, per locked decisions): separate `/book` route, login UI, payment, SMS, email confirmation, admin dashboard.
+
+Files touched: `index.html` only. No new files.

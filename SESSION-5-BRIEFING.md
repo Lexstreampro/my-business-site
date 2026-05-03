@@ -259,6 +259,27 @@ If any missing: **stop and request from partner.** Do not guess or improvise Fir
 
 ---
 
+## Execution Notes (2026-05-03)
+
+Build executed in one pass with Opus 4.7. Plan approved before code. Form + Firebase script integrated into `index.html` only (no new files, no new routes — `#booking` anchor is already wired across the site).
+
+**Schema correction:** the partner's spec is **Realtime Database**, not Firestore (rules use `.read`/`.write`, `databaseURL` provided, `capacityByDate` is a nested object). Built against modular RTDB SDK v11.0.2 via gstatic CDN.
+
+**Auth choice:** `signInAnonymously` — meets `auth != null` write rule, sign-in provider `"anonymous"` ≠ `"password"` so no collision with the portal-user read scope. Zero login UI = zero friction.
+
+**Open items handed back to user:**
+1. `messagingSenderId` + `appId` are placeholders. Smoke test confirmed RTDB writes still succeed without them (those fields drive FCM/Analytics), but fill before production.
+2. Service chip labels assumed; confirm canonical list with partner.
+3. Smoke test wrote one real test record to `/jobs` ("Test User" / "AB12CDE"). Delete from Firebase console.
+
+**QA result:** 390/768/1440 no overflow, all tap targets ≥44px, validation blocks invalid email, end-to-end Firebase write succeeded with success state rendering. No console/page errors.
+
+**Not done in this session (deliberate):**
+- Lighthouse score capture — needs to be run by user from DevTools (`netlify deploy` first for accurate score).
+- Production deploy — not run automatically; user-controlled per safety rails.
+
+---
+
 ## File References
 
 - **Current site:** `/Users/shanestokes/Desktop/my-business-site/index.html`

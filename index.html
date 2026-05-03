@@ -27,12 +27,37 @@
       }
     }
   </script>
+  <link rel="preload" as="image" href="assets/logo.jpeg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, body { box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #111111; color: #F8F8F8; margin: 0; }
     .headline { font-family: 'Space Grotesk', sans-serif; }
+
+    /* ── Booking form chips ── */
+    .bf-chip-label {
+      display: inline-block;
+      padding: 0.625rem 1rem;
+      min-height: 44px;
+      line-height: 1.4;
+      font-size: 0.8125rem;
+      font-family: 'Inter', sans-serif;
+      color: #BFC3C7;
+      background: #1C1C1C;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+    .bf-chip:hover .bf-chip-label { border-color: rgba(193,18,31,0.5); color: #F8F8F8; }
+    .bf-chip input:checked + .bf-chip-label {
+      background: rgba(193,18,31,0.12);
+      border-color: #C1121F;
+      color: #F8F8F8;
+    }
+    .bf-chip input:focus-visible + .bf-chip-label { outline: 2px solid #C1121F; outline-offset: 2px; }
+    .bf-invalid { border-color: rgba(193,18,31,0.7) !important; }
 
     /* ── Hero castle fade in ── */
     @keyframes castle-rise {
@@ -612,36 +637,105 @@
         <h2 class="headline font-bold text-tc-white mb-4" style="font-size:clamp(2rem,4vw,2.75rem); letter-spacing:-0.03em;">Request a Booking</h2>
         <p class="text-tc-alloy">Tell us what you need. We'll be in touch with timing and a clear estimate.</p>
       </div>
-      <form class="reveal space-y-4" onsubmit="return false;">
+      <form id="bookingForm" class="reveal space-y-4" novalidate>
+        <!-- Customer -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Your Name</label>
-            <input type="text" placeholder="e.g. James Morgan" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            <label for="bf-name" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Your Name <span class="text-tc-red">*</span></label>
+            <input id="bf-name" name="name" type="text" required aria-required="true" autocomplete="name" placeholder="e.g. James Morgan" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
           </div>
           <div>
-            <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Vehicle</label>
-            <input type="text" placeholder="e.g. VW Golf 2019" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            <label for="bf-phone" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Phone <span class="text-tc-red">*</span></label>
+            <input id="bf-phone" name="phone" type="tel" required aria-required="true" autocomplete="tel" placeholder="07700 900123" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
           </div>
         </div>
         <div>
-          <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Issue / Service Required</label>
-          <input type="text" placeholder="e.g. Brake pads + warning light on" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          <label for="bf-email" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Email <span class="text-tc-red">*</span></label>
+          <input id="bf-email" name="email" type="email" required aria-required="true" autocomplete="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Postcode</label>
-            <input type="text" placeholder="e.g. CF10 1AA" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            <label for="bf-postcode" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Postcode <span class="text-tc-red">*</span></label>
+            <input id="bf-postcode" name="postcode" type="text" required aria-required="true" autocomplete="postal-code" placeholder="CF10 1AA" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
           </div>
           <div>
-            <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Preferred Time</label>
-            <input type="text" placeholder="e.g. Weekday morning" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            <label for="bf-reg" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Vehicle Reg <span class="text-tc-red">*</span></label>
+            <input id="bf-reg" name="reg" type="text" required aria-required="true" placeholder="AB12 CDE" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
           </div>
         </div>
-        <button type="submit" class="headline w-full bg-tc-red hover:bg-tc-crimson text-white font-bold py-4 rounded transition-colors duration-200 mt-2" style="letter-spacing:-0.02em;">
+
+        <!-- Vehicle -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-make" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Make <span class="text-tc-red">*</span></label>
+            <input id="bf-make" name="make" type="text" required aria-required="true" placeholder="Vauxhall" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-model" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Model <span class="text-tc-red">*</span></label>
+            <input id="bf-model" name="model" type="text" required aria-required="true" placeholder="Corsa" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-year" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Year <span class="text-tc-red">*</span></label>
+            <input id="bf-year" name="year" type="text" required aria-required="true" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="2018" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-fuel" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Fuel <span class="text-tc-red">*</span></label>
+            <select id="bf-fuel" name="fuel" required aria-required="true" class="w-full px-4 py-3 rounded border text-tc-white text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+              <option value="" disabled selected>Select fuel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Electric">Electric</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Services <span class="text-tc-red">*</span> <span class="text-tc-alloy/60 normal-case">(select one or more)</span></label>
+          <div id="bf-services" class="flex flex-wrap gap-2" role="group" aria-label="Services required">
+            <!-- chips injected on load; static fallback below -->
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Interim Service" class="sr-only"><span class="bf-chip-label">Interim Service</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Full Service" class="sr-only"><span class="bf-chip-label">Full Service</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="MOT Preparation" class="sr-only"><span class="bf-chip-label">MOT Preparation</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Brakes &amp; Pads" class="sr-only"><span class="bf-chip-label">Brakes &amp; Pads</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Diagnostics" class="sr-only"><span class="bf-chip-label">Diagnostics</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Battery" class="sr-only"><span class="bf-chip-label">Battery</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Repair" class="sr-only"><span class="bf-chip-label">Repair</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Other" class="sr-only"><span class="bf-chip-label">Other</span></label>
+          </div>
+        </div>
+
+        <!-- Booking + notes -->
+        <div>
+          <label for="bf-date" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Preferred Date <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
+          <input id="bf-date" name="preferredDate" type="date" class="w-full px-4 py-3 rounded border text-tc-white text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08); color-scheme:dark;">
+          <p id="bf-date-msg" class="hidden text-tc-red text-xs mt-1.5"></p>
+        </div>
+        <div>
+          <label for="bf-notes" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Notes <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
+          <textarea id="bf-notes" name="notes" rows="3" placeholder="Any extra detail — e.g. warning lights, recent work, where the vehicle is parked." class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors resize-none" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);"></textarea>
+        </div>
+
+        <!-- Status nodes -->
+        <div id="bf-error" class="hidden rounded border px-4 py-3 text-sm" style="background:rgba(193,18,31,0.08); border-color:rgba(193,18,31,0.4); color:#F8F8F8;" role="alert" aria-live="polite"></div>
+
+        <button id="bf-submit" type="submit" class="headline w-full bg-tc-red hover:bg-tc-crimson disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded transition-colors duration-200 mt-2" style="letter-spacing:-0.02em;">
           Request Booking →
         </button>
         <p class="text-center text-tc-alloy text-xs">Transparent estimates before any work begins. No obligation.</p>
       </form>
+
+      <!-- Success state -->
+      <div id="bf-success" class="hidden text-center rounded border px-6 py-10" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);" role="status" aria-live="polite">
+        <div class="mx-auto mb-5 flex items-center justify-center w-12 h-12 rounded-full" style="background:rgba(193,18,31,0.12); border:1px solid rgba(193,18,31,0.4);">
+          <svg class="w-6 h-6 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="headline text-tc-white font-bold mb-2" style="font-size:1.5rem; letter-spacing:-0.02em;">Booked. Confirmed.</h3>
+        <p class="text-tc-alloy text-sm max-w-[360px] mx-auto">Your request is in. We'll be in touch shortly with timing and a clear estimate.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -933,6 +1027,159 @@
     { threshold: 0.08 }
   );
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- ═══════════════════════════════════════
+     FIREBASE — booking form integration
+═══════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+  import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+  import { getDatabase, ref, push, set, get } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBSJ8eACDed8wOhykeFcQYEVs7LDaHxUbw",
+    authDomain: "torqcymru-35abb.firebaseapp.com",
+    databaseURL: "https://torqcymru-35abb-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "torqcymru-35abb",
+    storageBucket: "torqcymru-35abb.appspot.com",
+    messagingSenderId: "REPLACE_WITH_SENDER_ID",
+    appId: "REPLACE_WITH_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+
+  const authReady = new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => { if (user) resolve(user); });
+    signInAnonymously(auth).catch(reject);
+  });
+
+  // Capacity: filter out full days
+  let fullDates = new Set();
+  authReady
+    .then(() => get(ref(db, "capacityByDate")))
+    .then(snap => {
+      if (!snap.exists()) return;
+      const data = snap.val();
+      Object.entries(data).forEach(([date, v]) => { if (v && v.full === true) fullDates.add(date); });
+    })
+    .catch(err => console.warn("[capacityByDate] read failed", err));
+
+  // Date picker min = today
+  const dateInput = document.getElementById("bf-date");
+  if (dateInput) {
+    const today = new Date().toISOString().slice(0, 10);
+    dateInput.min = today;
+    const dateMsg = document.getElementById("bf-date-msg");
+    dateInput.addEventListener("change", () => {
+      if (fullDates.has(dateInput.value)) {
+        dateMsg.textContent = "That day is fully booked. Please pick another date.";
+        dateMsg.classList.remove("hidden");
+        dateInput.classList.add("bf-invalid");
+      } else {
+        dateMsg.classList.add("hidden");
+        dateInput.classList.remove("bf-invalid");
+      }
+    });
+  }
+
+  // Chip toggle (clicking the label flips the hidden checkbox; styling driven by :checked)
+  // Native label-for-input behaviour handles this; nothing extra required.
+
+  // Auto-uppercase reg + postcode on blur
+  ["bf-reg", "bf-postcode"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("blur", () => { el.value = el.value.trim().toUpperCase(); });
+  });
+
+  const form = document.getElementById("bookingForm");
+  const errorBox = document.getElementById("bf-error");
+  const submitBtn = document.getElementById("bf-submit");
+  const successCard = document.getElementById("bf-success");
+
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.remove("hidden");
+  }
+  function clearError() {
+    errorBox.classList.add("hidden");
+    errorBox.textContent = "";
+  }
+
+  function mapError(err) {
+    const code = (err && (err.code || err.message)) || "";
+    if (/PERMISSION_DENIED|permission-denied/i.test(code)) {
+      return "We couldn't save your booking. Please try again or call us.";
+    }
+    if (/network|unavailable|auth\/network/i.test(code)) {
+      return "Network issue. Check your connection and try again.";
+    }
+    return "Something went wrong. Please try again or call us.";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearError();
+
+    const fd = new FormData(form);
+    const services = fd.getAll("services");
+
+    const required = ["name", "phone", "email", "postcode", "reg", "make", "model", "year", "fuel"];
+    for (const key of required) {
+      const v = (fd.get(key) || "").toString().trim();
+      if (!v) { showError("Please complete all required fields."); return; }
+    }
+    const email = (fd.get("email") || "").toString().trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("Please enter a valid email address."); return; }
+    const year = (fd.get("year") || "").toString().trim();
+    if (!/^[0-9]{4}$/.test(year)) { showError("Please enter a 4-digit year."); return; }
+    if (services.length === 0) { showError("Please select at least one service."); return; }
+
+    const preferredDate = (fd.get("preferredDate") || "").toString().trim();
+    if (preferredDate && fullDates.has(preferredDate)) {
+      showError("That day is fully booked. Please pick another date.");
+      return;
+    }
+
+    const payload = {
+      name:     (fd.get("name")     || "").toString().trim(),
+      phone:    (fd.get("phone")    || "").toString().trim(),
+      email:    email,
+      postcode: (fd.get("postcode") || "").toString().trim().toUpperCase(),
+      reg:      (fd.get("reg")      || "").toString().trim().toUpperCase(),
+      make:     (fd.get("make")     || "").toString().trim(),
+      model:    (fd.get("model")    || "").toString().trim(),
+      year:     year,
+      fuel:     (fd.get("fuel")     || "").toString(),
+      services: services.map(s => s.toString()),
+      notes:    (fd.get("notes")    || "").toString().trim(),
+      source:   "web",
+      stage:    "NEW_ENQUIRY",
+      createdAt: Date.now()
+    };
+    if (preferredDate) payload.preferredDate = preferredDate;
+
+    submitBtn.disabled = true;
+    const originalLabel = submitBtn.textContent;
+    submitBtn.textContent = "Sending…";
+
+    try {
+      await authReady;
+      const newRef = push(ref(db, "jobs"));
+      await set(newRef, payload);
+
+      form.classList.add("hidden");
+      successCard.classList.remove("hidden");
+      successCard.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      console.error("[booking] write failed", err);
+      showError(mapError(err));
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  });
 </script>
 
 </body>
