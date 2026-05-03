@@ -1043,8 +1043,42 @@
     databaseURL: "https://torqcymru-35abb-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "torqcymru-35abb",
     storageBucket: "torqcymru-35abb.appspot.com",
-    messagingSenderId: "REPLACE_WITH_SENDER_ID",
-    appId: "REPLACE_WITH_APP_ID"
+    messagingSenderId: "13382392132",
+    appId: "1:13382392132:web:f4e445f4cab51c40ae5f11"
+  };
+
+  // ─────────────────────────────────────────
+  // BOOKING CONFIG — edit anything tunable here.
+  // Single source of truth. Do not hardcode these values elsewhere.
+  // ─────────────────────────────────────────
+  const BOOKING_CONFIG = {
+    // Service chips shown on the form. Strings are written to /jobs/{id}/services
+    // and must match the labels the app reads. To add/remove/rename: edit this list only.
+    services: [
+      "Interim Service",
+      "Full Service",
+      "MOT Preparation",
+      "Brakes & Pads",
+      "Diagnostics",
+      "Battery",
+      "Repair",
+      "Other"
+    ],
+    // Fuel options for the dropdown
+    fuels: ["Petrol", "Diesel", "Hybrid", "Electric"],
+    // Copy strings — change wording without touching markup
+    copy: {
+      submitIdle:    "Request Booking →",
+      submitSending: "Sending…",
+      successTitle:  "Booked. Confirmed.",
+      successBody:   "Your request is in. We'll be in touch shortly with timing and a clear estimate.",
+      dayFullError:  "That day is fully booked. Please pick another date.",
+      genericError:  "Something went wrong. Please try again or call us.",
+      networkError:  "Network issue. Check your connection and try again.",
+      permissionError: "We couldn't save your booking. Please try again or call us."
+    },
+    // Field that goes into the /jobs record so the app knows where the booking came from
+    sourceTag: "web"
   };
 
   const app = initializeApp(firebaseConfig);
@@ -1055,6 +1089,34 @@
     onAuthStateChanged(auth, (user) => { if (user) resolve(user); });
     signInAnonymously(auth).catch(reject);
   });
+
+  // ── Render service chips + fuel options from CONFIG (single source of truth) ──
+  (function renderFromConfig() {
+    const chipHost = document.getElementById("bf-services");
+    if (chipHost) {
+      chipHost.innerHTML = BOOKING_CONFIG.services.map(svc => {
+        const safe = svc.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+        return `<label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="${safe}" class="sr-only"><span class="bf-chip-label">${safe}</span></label>`;
+      }).join("");
+    }
+    const fuelSel = document.getElementById("bf-fuel");
+    if (fuelSel) {
+      const placeholder = fuelSel.querySelector('option[value=""]');
+      fuelSel.innerHTML = "";
+      if (placeholder) fuelSel.appendChild(placeholder);
+      BOOKING_CONFIG.fuels.forEach(f => {
+        const opt = document.createElement("option");
+        opt.value = f; opt.textContent = f;
+        fuelSel.appendChild(opt);
+      });
+    }
+    const submitBtnEl = document.getElementById("bf-submit");
+    if (submitBtnEl) submitBtnEl.textContent = BOOKING_CONFIG.copy.submitIdle;
+    const successTitle = document.querySelector("#bf-success h3");
+    const successBody  = document.querySelector("#bf-success p");
+    if (successTitle) successTitle.textContent = BOOKING_CONFIG.copy.successTitle;
+    if (successBody)  successBody.textContent  = BOOKING_CONFIG.copy.successBody;
+  })();
 
   // Capacity: filter out full days
   let fullDates = new Set();
@@ -1075,7 +1137,7 @@
     const dateMsg = document.getElementById("bf-date-msg");
     dateInput.addEventListener("change", () => {
       if (fullDates.has(dateInput.value)) {
-        dateMsg.textContent = "That day is fully booked. Please pick another date.";
+        dateMsg.textContent = BOOKING_CONFIG.copy.dayFullError;
         dateMsg.classList.remove("hidden");
         dateInput.classList.add("bf-invalid");
       } else {
@@ -1110,13 +1172,9 @@
 
   function mapError(err) {
     const code = (err && (err.code || err.message)) || "";
-    if (/PERMISSION_DENIED|permission-denied/i.test(code)) {
-      return "We couldn't save your booking. Please try again or call us.";
-    }
-    if (/network|unavailable|auth\/network/i.test(code)) {
-      return "Network issue. Check your connection and try again.";
-    }
-    return "Something went wrong. Please try again or call us.";
+    if (/PERMISSION_DENIED|permission-denied/i.test(code)) return BOOKING_CONFIG.copy.permissionError;
+    if (/network|unavailable|auth\/network/i.test(code))   return BOOKING_CONFIG.copy.networkError;
+    return BOOKING_CONFIG.copy.genericError;
   }
 
   form.addEventListener("submit", async (e) => {
@@ -1139,7 +1197,7 @@
 
     const preferredDate = (fd.get("preferredDate") || "").toString().trim();
     if (preferredDate && fullDates.has(preferredDate)) {
-      showError("That day is fully booked. Please pick another date.");
+      showError(BOOKING_CONFIG.copy.dayFullError);
       return;
     }
 
@@ -1155,7 +1213,7 @@
       fuel:     (fd.get("fuel")     || "").toString(),
       services: services.map(s => s.toString()),
       notes:    (fd.get("notes")    || "").toString().trim(),
-      source:   "web",
+      source:   BOOKING_CONFIG.sourceTag,
       stage:    "NEW_ENQUIRY",
       createdAt: Date.now()
     };
@@ -1163,7 +1221,7 @@
 
     submitBtn.disabled = true;
     const originalLabel = submitBtn.textContent;
-    submitBtn.textContent = "Sending…";
+    submitBtn.textContent = BOOKING_CONFIG.copy.submitSending;
 
     try {
       await authReady;
