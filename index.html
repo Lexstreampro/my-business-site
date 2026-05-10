@@ -1415,7 +1415,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
   import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-  import { getDatabase, ref, push, set, get } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+  import { getDatabase, ref, push, set, get, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBSJ8eACDed8wOhykeFcQYEVs7LDaHxUbw",
@@ -1505,11 +1505,28 @@
   }
 
   // ── Load settings from Firebase on startup ──
+  const DEFAULT_SERVICES = {
+    "Interim Service": { name: "Interim Service", category: "Maintenance" },
+    "Full Service": { name: "Full Service", category: "Maintenance" },
+    "Brakes": { name: "Brakes", category: "Maintenance" },
+    "Diagnostics": { name: "Diagnostics", category: "Diagnostics" },
+    "Battery": { name: "Battery", category: "Replacement" },
+    "Repair": { name: "Repair", category: "Repair" },
+    "Other": { name: "Other", category: "Other" }
+  };
+
   function loadBookingSettings() {
-    db.ref('settings').off('value');
-    db.ref('settings').on('value', snap => {
-      BOOKING_SETTINGS = snap.val() || {};
-      renderBookingPickers();
+    // Fallback to defaults immediately so form isn't stuck loading
+    BOOKING_SETTINGS = { services: DEFAULT_SERVICES };
+    renderBookingPickers();
+
+    // Then try to sync with Firebase (will override defaults if Firebase has data)
+    onValue(ref(db, 'settings'), snap => {
+      const fbSettings = snap.val() || {};
+      if (fbSettings.services || fbSettings.addons) {
+        BOOKING_SETTINGS = fbSettings;
+        renderBookingPickers();
+      }
     });
   }
   loadBookingSettings();
