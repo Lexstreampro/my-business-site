@@ -1006,6 +1006,7 @@
         <p class="text-tc-alloy">Tell us what you need. We'll be in touch with timing and a clear estimate.</p>
       </div>
       <form id="bookingForm" class="reveal space-y-4" novalidate>
+        <!-- CUSTOMER INFO -->
         <div>
           <label for="bf-name" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Your Name <span class="text-tc-red">*</span></label>
           <input id="bf-name" name="name" type="text" required aria-required="true" autocomplete="name" placeholder="e.g. James Morgan" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
@@ -1021,27 +1022,82 @@
           <input id="bf-email" name="email" type="email" required aria-required="true" autocomplete="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
         </div>
 
+        <!-- VEHICLE INFO -->
+        <fieldset style="border:none;padding:0;margin:0;">
+          <legend class="block text-tc-red text-xs mb-3 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Vehicle Details <span class="text-tc-red">*</span></legend>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div>
+              <label for="bf-reg" class="block text-tc-steel text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;">Registration</label>
+              <input id="bf-reg" name="reg" type="text" required aria-required="true" placeholder="ABC123DEF" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            </div>
+            <div>
+              <label for="bf-year" class="block text-tc-steel text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;">Year</label>
+              <input id="bf-year" name="year" type="text" required aria-required="true" placeholder="2019" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+            <div>
+              <label for="bf-make" class="block text-tc-steel text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;">Make</label>
+              <input id="bf-make" name="make" type="text" required aria-required="true" placeholder="Volkswagen" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            </div>
+            <div>
+              <label for="bf-model" class="block text-tc-steel text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;">Model</label>
+              <input id="bf-model" name="model" type="text" required aria-required="true" placeholder="Golf" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+            </div>
+          </div>
+          <div>
+            <label for="bf-fuel" class="block text-tc-steel text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;">Fuel Type</label>
+            <select id="bf-fuel" name="fuel" required aria-required="true" class="w-full px-4 py-3 rounded border text-tc-white text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08); color:#F8F8F8;">
+              <option value="">Select fuel type</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Electric">Electric</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- SERVICES -->
         <div>
-          <label for="bf-vehicle" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Vehicle <span class="text-tc-red">*</span></label>
-          <input id="bf-vehicle" name="vehicle" type="text" required aria-required="true" placeholder="e.g. VW Golf 2019" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          <label class="block text-tc-red text-xs mb-3 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Services <span class="text-tc-red">*</span></label>
+          <div id="bf-services-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;lg:grid-template-columns:repeat(3,1fr);">
+            <div style="text-align:center;color:var(--tc-alloy);font-size:0.75rem;padding:20px;grid-column:1/-1;">Loading services...</div>
+          </div>
         </div>
 
+        <!-- ADD-ONS -->
         <div>
-          <label for="bf-issue" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Issue / Service Required <span class="text-tc-red">*</span></label>
-          <textarea id="bf-issue" name="issue" rows="3" required aria-required="true" placeholder="What needs attention? E.g. Brake service, diagnostic, battery, etc." class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors resize-none" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);"></textarea>
+          <label class="block text-tc-red text-xs mb-3 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Add-ons (optional)</label>
+          <div id="bf-addons-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;lg:grid-template-columns:repeat(3,1fr);">
+            <div style="text-align:center;color:var(--tc-alloy);font-size:0.75rem;padding:20px;grid-column:1/-1;">Loading add-ons...</div>
+          </div>
         </div>
 
+        <!-- POSTCODE -->
         <div>
           <label for="bf-postcode" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Postcode <span class="text-tc-red">*</span></label>
           <input id="bf-postcode" name="postcode" type="text" required aria-required="true" autocomplete="postal-code" placeholder="CF10 1AA" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
         </div>
 
+        <!-- ADDITIONAL DETAILS -->
         <div>
-          <label for="bf-time" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Preferred Time <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
-          <input id="bf-time" name="preferredTime" type="text" placeholder="e.g. Morning, Afternoon, This Week" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          <label for="bf-desc" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Additional Details (optional)</label>
+          <textarea id="bf-desc" name="enquiryDesc" rows="3" placeholder="Any other information we should know? Symptoms, previous work, preferences..." class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors resize-none" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);"></textarea>
         </div>
 
-        <!-- Status nodes -->
+        <!-- CONFIRMATION -->
+        <div style="padding:12px;background:rgba(193,18,31,0.08);border:1px solid rgba(193,18,31,0.2);border-radius:6px;">
+          <label style="display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;cursor:pointer;font-size:0.85rem;">
+            <input id="bf-confirm-location" name="confirmLocation" type="checkbox" required aria-required="true" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;margin-bottom:0;">
+            <span style="color:#F8F8F8;">I confirm this is the correct address for the work</span>
+          </label>
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.85rem;">
+            <input id="bf-confirm-terms" name="confirmTerms" type="checkbox" required aria-required="true" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;margin-bottom:0;">
+            <span style="color:#F8F8F8;">I agree to the terms & conditions</span>
+          </label>
+        </div>
+
+        <!-- STATUS & SUBMIT -->
         <div id="bf-error" class="hidden rounded border px-4 py-3 text-sm" style="background:rgba(193,18,31,0.08); border-color:rgba(193,18,31,0.4); color:#F8F8F8;" role="alert" aria-live="polite"></div>
 
         <button id="bf-submit" type="submit" class="headline w-full bg-tc-red hover:bg-tc-crimson disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded transition-colors duration-200 mt-2" style="letter-spacing:-0.02em;">
@@ -1375,32 +1431,18 @@
   // BOOKING CONFIG — edit anything tunable here.
   // Single source of truth. Do not hardcode these values elsewhere.
   // ─────────────────────────────────────────
-  const BOOKING_CONFIG = {
-    // Service chips shown on the form. Strings are written to /jobs/{id}/services
-    // and must match the labels the app reads. To add/remove/rename: edit this list only.
-    services: [
-      "Interim Service",
-      "Full Service",
-      "Brakes",
-      "Diagnostics",
-      "Battery",
-      "Repair",
-      "Other"
-    ],
-    // Fuel options for the dropdown
-    fuels: ["Petrol", "Diesel", "Hybrid", "Electric"],
-    // Copy strings — change wording without touching markup
+  // Shared booking config — read from Firebase, never hardcoded
+  let BOOKING_SETTINGS = {};
+  let BOOKING_CONFIG = {
     copy: {
       submitIdle:    "Request Booking →",
       submitSending: "Sending…",
       successTitle:  "Booked. Confirmed.",
       successBody:   "Your request is in. We'll be in touch shortly with timing and a clear estimate.",
-      dayFullError:  "That day is fully booked. Please pick another date.",
       genericError:  "Something went wrong. Please try again or call us.",
       networkError:  "Network issue. Check your connection and try again.",
       permissionError: "We couldn't save your booking. Please try again or call us."
     },
-    // Field that goes into the /jobs record so the app knows where the booking came from
     sourceTag: "web"
   };
 
@@ -1413,33 +1455,64 @@
     signInAnonymously(auth).catch(reject);
   });
 
-  // ── Render service chips + fuel options from CONFIG (single source of truth) ──
-  (function renderFromConfig() {
-    const chipHost = document.getElementById("bf-services");
-    if (chipHost) {
-      chipHost.innerHTML = BOOKING_CONFIG.services.map(svc => {
-        const safe = svc.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-        return `<label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="${safe}" class="sr-only"><span class="bf-chip-label">${safe}</span></label>`;
-      }).join("");
+  // ── Render services & add-ons from Firebase (shared source of truth) ──
+  function renderBookingPickers() {
+    const services = _enqToArray(BOOKING_SETTINGS.services);
+    const addons = _enqToArray(BOOKING_SETTINGS.addons);
+
+    const svcGrid = document.getElementById('bf-services-grid');
+    if (svcGrid) {
+      if (!services.length) {
+        svcGrid.innerHTML = `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--tc-alloy);text-align:center;padding:20px;">No services configured.</div>`;
+      } else {
+        svcGrid.innerHTML = services.map(s => {
+          const safe = String(s.name||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+          return `<label style="display:flex;align-items:center;gap:8px;padding:8px;background:#0d0d0d;border:1px solid rgba(255,255,255,0.08);border-radius:6px;cursor:pointer;transition:all 0.2s;" class="bf-service-chip" data-name="${safe}">
+            <input type="checkbox" name="services" value="${safe}" style="width:16px;height:16px;cursor:pointer;margin:0;">
+            <span style="font-size:0.85rem;color:#F8F8F8;flex:1;">${safe}</span>
+          </label>`;
+        }).join('');
+      }
     }
-    const fuelSel = document.getElementById("bf-fuel");
-    if (fuelSel) {
-      const placeholder = fuelSel.querySelector('option[value=""]');
-      fuelSel.innerHTML = "";
-      if (placeholder) fuelSel.appendChild(placeholder);
-      BOOKING_CONFIG.fuels.forEach(f => {
-        const opt = document.createElement("option");
-        opt.value = f; opt.textContent = f;
-        fuelSel.appendChild(opt);
-      });
+
+    const addGrid = document.getElementById('bf-addons-grid');
+    if (addGrid) {
+      if (!addons.length) {
+        addGrid.innerHTML = `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--tc-alloy);text-align:center;padding:20px;">No add-ons available.</div>`;
+      } else {
+        addGrid.innerHTML = addons.map(a => {
+          const safe = String(a.name||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+          return `<label style="display:flex;align-items:center;gap:8px;padding:8px;background:#0d0d0d;border:1px solid rgba(255,255,255,0.08);border-radius:6px;cursor:pointer;transition:all 0.2s;" class="bf-addon-chip" data-name="${safe}">
+            <input type="checkbox" name="addons" value="${safe}" style="width:16px;height:16px;cursor:pointer;margin:0;">
+            <span style="font-size:0.85rem;color:#F8F8F8;flex:1;">${safe}</span>
+          </label>`;
+        }).join('');
+      }
     }
+
     const submitBtnEl = document.getElementById("bf-submit");
     if (submitBtnEl) submitBtnEl.textContent = BOOKING_CONFIG.copy.submitIdle;
     const successTitle = document.querySelector("#bf-success h3");
     const successBody  = document.querySelector("#bf-success p");
     if (successTitle) successTitle.textContent = BOOKING_CONFIG.copy.successTitle;
     if (successBody)  successBody.textContent  = BOOKING_CONFIG.copy.successBody;
-  })();
+  }
+
+  function _enqToArray(obj) {
+    if (!obj) return [];
+    if (Array.isArray(obj)) return obj;
+    return Object.values(obj);
+  }
+
+  // ── Load settings from Firebase on startup ──
+  function loadBookingSettings() {
+    db.ref('settings').off('value');
+    db.ref('settings').on('value', snap => {
+      BOOKING_SETTINGS = snap.val() || {};
+      renderBookingPickers();
+    });
+  }
+  loadBookingSettings();
 
   // Capacity: filter out full days
   let fullDates = new Set();
@@ -1511,27 +1584,72 @@
 
     const fd = new FormData(form);
 
-    // Website form: simple validation for required fields only
-    const required = ["name", "phone", "email", "vehicle", "issue", "postcode"];
-    for (const key of required) {
-      const v = (fd.get(key) || "").toString().trim();
-      if (!v) { showError("Please complete all required fields."); return; }
-    }
-
+    // ── Validation (matching portal's requirements) ──
+    const name = (fd.get("name") || "").toString().trim();
+    const phone = (fd.get("phone") || "").toString().trim();
     const email = (fd.get("email") || "").toString().trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("Please enter a valid email address."); return; }
+    const reg = (fd.get("reg") || "").toString().trim().toUpperCase();
+    const make = (fd.get("make") || "").toString().trim().toUpperCase();
+    const model = (fd.get("model") || "").toString().trim().toUpperCase();
+    const year = (fd.get("year") || "").toString().trim();
+    const fuel = (fd.get("fuel") || "").toString();
+    const postcode = (fd.get("postcode") || "").toString().trim().toUpperCase();
+    const enquiryDesc = (fd.get("enquiryDesc") || "").toString().trim();
+    const confirmLocation = document.getElementById("bf-confirm-location").checked;
+    const confirmTerms = document.getElementById("bf-confirm-terms").checked;
 
+    // Check required fields
+    if (!name) { showError("Please enter your name."); return; }
+    if (!phone) { showError("Please enter your phone number."); return; }
+    if (!email) { showError("Please enter your email address."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("Please enter a valid email address."); return; }
+    if (!reg) { showError("Please enter your vehicle registration."); return; }
+    if (!make) { showError("Please enter your vehicle make."); return; }
+    if (!model) { showError("Please enter your vehicle model."); return; }
+    if (!year || !/^[0-9]{4}$/.test(year)) { showError("Please enter a valid 4-digit year."); return; }
+    if (!fuel) { showError("Please select a fuel type."); return; }
+    if (!postcode) { showError("Please enter your postcode."); return; }
+
+    // Check services (must select at least one)
+    const selectedServices = [...document.querySelectorAll('input[name="services"]:checked')].map(c => c.value);
+    if (!selectedServices.length) { showError("Please select at least one service."); return; }
+
+    // Check confirmations
+    if (!confirmLocation) { showError("Please confirm this is the correct address for the work."); return; }
+    if (!confirmTerms) { showError("Please accept the terms & conditions."); return; }
+
+    // Get add-ons (optional)
+    const selectedAddons = [...document.querySelectorAll('input[name="addons"]:checked')].map(c => ({ name: c.value, price: 0 }));
+
+    // ── Build payload (matching portal schema) ──
+    const now = Date.now();
     const payload = {
-      name:           (fd.get("name") || "").toString().trim(),
-      phone:          (fd.get("phone") || "").toString().trim(),
-      email:          email,
-      vehicle:        (fd.get("vehicle") || "").toString().trim(),
-      issue:          (fd.get("issue") || "").toString().trim(),
-      postcode:       (fd.get("postcode") || "").toString().trim().toUpperCase(),
-      preferredTime:  (fd.get("preferredTime") || "").toString().trim(),
-      source:         BOOKING_CONFIG.sourceTag,
-      stage:          "NEW_ENQUIRY",
-      createdAt:      Date.now()
+      // Contact info
+      name,
+      phone,
+      email,
+      // Vehicle
+      reg,
+      make,
+      model,
+      year,
+      fuel,
+      // Location
+      postcode,
+      address: postcode,  // For website, address = postcode only
+      // Services & add-ons
+      services: selectedServices,
+      addons: selectedAddons,
+      enquiryDesc,
+      // Compliance
+      locationConfirmed: true,
+      locationConfirmedAt: now,
+      termsAccepted: true,
+      termsAcceptedAt: now,
+      // Tracking
+      stage: "NEW_ENQUIRY",
+      source: BOOKING_CONFIG.sourceTag,
+      createdAt: now,
     };
 
     submitBtn.disabled = true;
