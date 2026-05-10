@@ -96,17 +96,6 @@
       80%      { opacity: 0.55; }
       100%     { opacity: 0.55; }
     }
-
-    @keyframes flame-flicker {
-      0%, 100% { opacity: 0.2; }
-      25% { opacity: 0.6; }
-      50% { opacity: 0.4; }
-      75% { opacity: 0.7; }
-    }
-    .flame-pulse {
-      animation: flame-flicker 1.2s ease-in-out infinite;
-    }
-
     #preloader { animation: preloader-fade-in 0.4s ease both; }
     #preloader.dismissing {
       opacity: 0;
@@ -202,9 +191,6 @@
       <!-- Logo (inline base64 — works in sandboxed contexts) -->
       <div class="logo-bg absolute inset-0 rounded-full overflow-hidden border-2" style="border-color:rgba(193,18,31,0.55); box-shadow:0 0 50px rgba(193,18,31,0.30), 0 0 120px rgba(193,18,31,0.10); z-index:1;" role="img" aria-label="TORQ Cymru Automotive"></div>
 
-      <!-- Flame flicker overlay -->
-      <div class="flame-pulse absolute inset-0 rounded-full" style="background: radial-gradient(circle at 30% 40%, rgba(255,140,0,0.4) 0%, rgba(193,18,31,0.3) 30%, transparent 70%); z-index:1.2; pointer-events:none;"></div>
-
       <!-- Speedometer arc (overlay, sweep below) -->
       <svg width="240" height="240" viewBox="0 0 240 240" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:2; overflow:visible;">
         <defs>
@@ -274,7 +260,7 @@
       <span class="headline font-bold text-lg tracking-tight">TORQ <span class="text-tc-red">Cymru</span></span>
     </a>
     <div class="hidden lg:flex items-center gap-8 text-sm text-tc-alloy">
-      <a href="services.html" class="hover:text-tc-white transition-colors duration-200">Services</a>
+      <a href="#services" class="hover:text-tc-white transition-colors duration-200">Services</a>
       <a href="#why"      class="hover:text-tc-white transition-colors duration-200">Why TORQ</a>
       <a href="#work"     class="hover:text-tc-white transition-colors duration-200">Recent Work</a>
       <a href="#reviews"  class="hover:text-tc-white transition-colors duration-200">Reviews</a>
@@ -308,7 +294,7 @@
       </button>
     </div>
     <nav class="flex flex-col px-6 py-6 gap-1 flex-1">
-      <a href="services.html" class="menu-link headline text-tc-steel hover:text-tc-white py-3 border-b text-base" style="border-color:rgba(255,255,255,0.04); letter-spacing:-0.02em;">Services</a>
+      <a href="#services" class="menu-link headline text-tc-steel hover:text-tc-white py-3 border-b text-base" style="border-color:rgba(255,255,255,0.04); letter-spacing:-0.02em;">Services</a>
       <a href="#why"      class="menu-link headline text-tc-steel hover:text-tc-white py-3 border-b text-base" style="border-color:rgba(255,255,255,0.04); letter-spacing:-0.02em;">Why TORQ</a>
       <a href="#work"     class="menu-link headline text-tc-steel hover:text-tc-white py-3 border-b text-base" style="border-color:rgba(255,255,255,0.04); letter-spacing:-0.02em;">Recent Work</a>
       <a href="#reviews"  class="menu-link headline text-tc-steel hover:text-tc-white py-3 border-b text-base" style="border-color:rgba(255,255,255,0.04); letter-spacing:-0.02em;">Reviews</a>
@@ -455,7 +441,7 @@
         <div class="w-10 h-10 rounded flex items-center justify-center mb-5" style="background:rgba(193,18,31,0.1);">
           <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
         </div>
-        <h3 class="headline font-semibold text-tc-white mb-2 text-lg" style="letter-spacing:-0.02em;">Brakes</h3>
+        <h3 class="headline font-semibold text-tc-white mb-2 text-lg" style="letter-spacing:-0.02em;">Brakes &amp; Pads</h3>
         <p class="text-tc-alloy text-sm leading-relaxed mb-5">Full brake inspections, pad replacement and disc work — done properly at your location.</p>
         <a href="#booking" class="text-tc-red text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style="font-family:'Space Grotesk',sans-serif;">Book Now <span>→</span></a>
       </div>
@@ -465,7 +451,7 @@
           <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         </div>
         <h3 class="headline font-semibold text-tc-white mb-2 text-lg" style="letter-spacing:-0.02em;">Servicing</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed mb-5">Interim, Basic & Full servicing. Quality parts, no drop-off needed.</p>
+        <p class="text-tc-alloy text-sm leading-relaxed mb-5">Full and interim services using quality parts. No garage drop-off required.</p>
         <a href="#booking" class="text-tc-red text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style="font-family:'Space Grotesk',sans-serif;">Book Now <span>→</span></a>
       </div>
       <!-- Diagnostics -->
@@ -483,7 +469,16 @@
           <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
         <h3 class="headline font-semibold text-tc-white mb-2 text-lg" style="letter-spacing:-0.02em;">Batteries</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed mb-5">Supply and fit. We come to you wherever you're stranded.</p>
+        <p class="text-tc-alloy text-sm leading-relaxed mb-5">Supply and fit. Same-day service available. We come to you wherever you're stranded.</p>
+        <a href="#booking" class="text-tc-red text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style="font-family:'Space Grotesk',sans-serif;">Book Now <span>→</span></a>
+      </div>
+      <!-- MOT Prep -->
+      <div class="group p-6 rounded border hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+        <div class="w-10 h-10 rounded flex items-center justify-center mb-5" style="background:rgba(193,18,31,0.1);">
+          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="headline font-semibold text-tc-white mb-2 text-lg" style="letter-spacing:-0.02em;">MOT Preparation</h3>
+        <p class="text-tc-alloy text-sm leading-relaxed mb-5">Pre-MOT checks to maximise your pass rate. We find issues before the test centre does.</p>
         <a href="#booking" class="text-tc-red text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style="font-family:'Space Grotesk',sans-serif;">Book Now <span>→</span></a>
       </div>
       <!-- Fleet -->
@@ -501,393 +496,42 @@
 
 
 <!-- ═══════════════════════════════════════
-     WHY TORQ CYMRU — ELITE PERSUASION PAGE
+     WHY TORQ CYMRU
 ═══════════════════════════════════════ -->
-
-<!-- SECTION 1: HERO + PROOF STRIP -->
-<section id="why" class="py-16 lg:py-20" style="background:#141414;">
+<section id="why" class="py-20 lg:py-24" style="background:#141414;">
   <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-8 lg:mb-12">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">Why TORQ Cymru</p>
-      <h1 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(2rem,5vw,3rem); letter-spacing:-0.03em;">Why drivers choose TORQ Cymru</h1>
-      <p class="text-tc-steel text-lg lg:text-xl max-w-[640px] leading-relaxed">Premium mobile mechanics for drivers who want honest advice, proper workmanship, and garage-quality service without the garage hassle.</p>
+    <div class="reveal mb-12 lg:mb-14">
+      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">The Difference</p>
+      <h2 class="headline font-bold text-tc-white mb-4" style="font-size:clamp(2rem,4vw,2.75rem); letter-spacing:-0.03em;">We Come To You.<br>We Do It Properly.</h2>
     </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 reveal">
-      <div class="p-4 lg:p-5 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red font-bold text-sm mb-1" style="font-family:'Space Grotesk',sans-serif;">Mobile Service</div>
-        <p class="text-tc-alloy text-xs">Across South Wales</p>
-      </div>
-      <div class="p-4 lg:p-5 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red font-bold text-sm mb-1" style="font-family:'Space Grotesk',sans-serif;">Transparent Pricing</div>
-        <p class="text-tc-alloy text-xs">Fair rates, no surprises</p>
-      </div>
-      <div class="p-4 lg:p-5 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red font-bold text-sm mb-1" style="font-family:'Space Grotesk',sans-serif;">Diagnostics First</div>
-        <p class="text-tc-alloy text-xs">Only work that's needed</p>
-      </div>
-      <div class="p-4 lg:p-5 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red font-bold text-sm mb-1" style="font-family:'Space Grotesk',sans-serif;">Convenient Booking</div>
-        <p class="text-tc-alloy text-xs">See availability, book your slot</p>
-      </div>
-      <div class="p-4 lg:p-5 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red font-bold text-sm mb-1" style="font-family:'Space Grotesk',sans-serif;">Trusted Service</div>
-        <p class="text-tc-alloy text-xs">Verified by local drivers</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 2: THE PROBLEM — FRUSTRATIONS WITH GARAGES -->
-<section class="py-16 lg:py-20" style="background:#111111;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">The Frustration</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">The usual garage experience.</h2>
-      <p class="text-tc-steel text-base lg:text-lg max-w-[640px]">Sound familiar?</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[800px] reveal">
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Taking time off work</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">You have to arrange your day around the garage's schedule, not yours.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6 reveal">
+      <div class="p-7 lg:p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+        <div class="w-8 h-8 rounded flex items-center justify-center mb-5 lg:mb-6" style="background:rgba(193,18,31,0.15);">
+          <svg class="w-4 h-4 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
         </div>
+        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Come To You</h3>
+        <p class="text-tc-alloy leading-relaxed">The forecourt is closed. The waiting room is gone. We bring the workshop to your door — fully equipped, properly turned out — so you don't lose a single hour to a job we should be handling for you.</p>
       </div>
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Sitting in a waiting room</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">Waiting around with stale coffee while someone else decides what your car needs.</p>
+      <div class="p-7 lg:p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+        <div class="w-8 h-8 rounded flex items-center justify-center mb-5 lg:mb-6" style="background:rgba(193,18,31,0.15);">
+          <svg class="w-4 h-4 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
+        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Respect Your Time</h3>
+        <p class="text-tc-alloy leading-relaxed">Booked means booked. You'll know when we're due, what we're doing, and what it costs — before a single bolt is touched. Your day belongs to you, not us.</p>
       </div>
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Unclear pricing</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">You don't know what it will cost until they've already started work.</p>
-        </div>
-      </div>
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Feeling pressured</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">You're told work is needed without a clear explanation or time to think.</p>
-        </div>
-      </div>
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Losing trust in the process</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">You're not sure if the work was actually necessary or if you were upsold.</p>
-        </div>
-      </div>
-      <div class="flex gap-4">
-        <div class="text-tc-red text-2xl flex-shrink-0 mt-1">✗</div>
-        <div>
-          <h3 class="headline text-tc-white font-semibold text-lg mb-2" style="letter-spacing:-0.02em;">Poor communication</h3>
-          <p class="text-tc-alloy text-sm leading-relaxed">You're left wondering what's happening with your vehicle.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: THE TORQ DIFFERENCE — 6 BENEFITS -->
-<section class="py-16 lg:py-20" style="background:#141414;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">The Solution</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">The TORQ Cymru difference.</h2>
-      <p class="text-tc-steel text-base lg:text-lg max-w-[640px]">What sets us apart from every other option.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
-        </div>
-        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Come to You</h3>
-        <p class="text-tc-alloy leading-relaxed">No waiting rooms. No driving around. Service at your home or workplace. Your time is precious — we respect that.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-        </div>
-        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Diagnose Properly</h3>
-        <p class="text-tc-alloy leading-relaxed">Diagnostics first. We find what's actually wrong before recommending anything. No guesswork. No upselling.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Explain Clearly</h3>
-        <p class="text-tc-alloy leading-relaxed">No jargon. No pressure. We explain what's wrong, what needs doing, and why — in plain language.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Price Transparently</h3>
-        <p class="text-tc-alloy leading-relaxed">Clear estimate before we start. Fair pricing. No hidden charges. You know what you're paying and why.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Respect Your Vehicle</h3>
-        <p class="text-tc-alloy leading-relaxed">Manufacturer-spec parts. Methodical workmanship. Every job documented and traceable.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-          <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      <div class="p-7 lg:p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+        <div class="w-8 h-8 rounded flex items-center justify-center mb-5 lg:mb-6" style="background:rgba(193,18,31,0.15);">
+          <svg class="w-4 h-4 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
         </div>
         <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We Do It Properly</h3>
-        <p class="text-tc-alloy leading-relaxed">Shortcuts cost more. We take time to do it right the first time, every time.</p>
+        <p class="text-tc-alloy leading-relaxed">Manufacturer-spec parts. Methodical work. Estimates given before any spanner turns, every job documented, every invoice traceable — because shortcuts cost more than they save, every time.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: CUSTOMER PROMISE / STANDARDS -->
-<section class="py-16 lg:py-20" style="background:#111111;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16 max-w-[700px]">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">Our Promise</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">The TORQ Cymru standard.</h2>
-      <p class="text-tc-steel text-base lg:text-lg">This is what you can expect, every time.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] reveal">
-      <div>
-        <h3 class="headline text-tc-white font-semibold text-lg mb-6" style="letter-spacing:-0.02em;">Communication</h3>
-        <ul class="space-y-4">
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">Clear communication before any work begins</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">We'll call you after the job to confirm everything's running right</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">You're never left wondering what's happening</span>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="headline text-tc-white font-semibold text-lg mb-6" style="letter-spacing:-0.02em;">Pricing & Trust</h3>
-        <ul class="space-y-4">
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">No hidden extras or surprise charges</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">Only work that's actually needed gets done</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm leading-relaxed">All work guaranteed — if something fails within 12 months, we'll fix it free</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: WHY MOBILE BEATS GARAGE -->
-<section class="py-16 lg:py-20" style="background:#141414;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16 max-w-[700px]">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">The Comparison</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">Why mobile works better for busy drivers.</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-[900px] reveal">
-      <div>
-        <h3 class="headline text-tc-red font-semibold text-lg mb-6" style="letter-spacing:-0.02em;">Traditional Garage</h3>
-        <ul class="space-y-3">
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Wait for an appointment slot that suits them</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Travel to the garage, park, wait</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Sit in a waiting room with weak coffee</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Accept whatever they recommend</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Feel pressure to decide on the spot</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="text-tc-red text-lg font-bold">✗</span>
-            <span class="text-tc-alloy text-sm">Lose half your day to logistics</span>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="headline text-tc-white font-semibold text-lg mb-6" style="letter-spacing:-0.02em;">TORQ Cymru Mobile</h3>
-        <ul class="space-y-3">
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">See our availability. Book the slot that works for you</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">Service at your home or work — no travel needed</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">Stay with your vehicle. See the work being done</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">Ask questions. Get clear explanations in real time</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">More personal, more honest, more convenient</span>
-          </li>
-          <li class="flex gap-3">
-            <svg class="w-5 h-5 text-tc-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span class="text-tc-alloy text-sm">Your time stays your own</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6: BUILT FOR SOUTH WALES — WELSH IDENTITY -->
-<section class="py-16 lg:py-20" style="background:#111111;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16 max-w-[700px]">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">Built Locally</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">Built for South Wales drivers.</h2>
-      <p class="text-tc-steel text-base lg:text-lg">Not a national chain. A local business, run to standards that matter in our communities.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] reveal">
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-4" style="letter-spacing:-0.02em;">Welsh-Based Service</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed mb-4">We know the roads. We understand the weather. We're familiar with the demands on South Wales drivers — from the M4 commute to the valleys, from rural backroads to city centre parking.</p>
-        <p class="text-tc-alloy text-sm leading-relaxed">TORQ Cymru is rooted here. Our success depends on your trust and repeat business. That changes how we operate.</p>
-      </div>
-
-      <div class="p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-4" style="letter-spacing:-0.02em;">A Different Standard</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed mb-4">We're not trying to scale nationally. We're building something better here: a business that knows its customers, takes pride in its work, and treats every vehicle like it matters.</p>
-        <p class="text-tc-alloy text-sm leading-relaxed">Professional but down-to-earth. Premium without the pretence. That's what South Wales drivers deserve.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 7: PROOF SECTION — TRUST STACKING -->
-<section class="py-16 lg:py-20" style="background:#141414;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">Proof</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">Trusted by drivers across Wales.</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
-      <div class="p-8 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-yellow-400 text-2xl mb-3">★★★★★</div>
-        <p class="text-tc-white font-semibold text-lg mb-2">Real Reviews</p>
-        <p class="text-tc-alloy text-sm">Verified feedback from drivers who've experienced our service. See our reviews section below.</p>
-      </div>
-
-      <div class="p-8 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red text-2xl mb-3">📸</div>
-        <p class="text-tc-white font-semibold text-lg mb-2">Real Work Photos</p>
-        <p class="text-tc-alloy text-sm">Jobs we've completed across South Wales. See what proper workmanship looks like.</p>
-      </div>
-
-      <div class="p-8 rounded border text-center" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <div class="text-tc-red text-2xl mb-3">✓</div>
-        <p class="text-tc-white font-semibold text-lg mb-2">Guaranteed Work</p>
-        <p class="text-tc-alloy text-sm">All work guaranteed for 12 months. If something fails, we fix it free. No arguments.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 8: FAQ — ADDRESSING OBJECTIONS -->
-<section class="py-16 lg:py-20" style="background:#111111;">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="reveal mb-12 lg:mb-16">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-4" style="font-family:'Space Grotesk',sans-serif;">FAQs</p>
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">Questions answered.</h2>
-    </div>
-
-    <div class="max-w-[800px] reveal">
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">Are you as good as a proper garage?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">Yes. We use the same diagnostic tools, manufacturer-spec parts, and proven procedures. The difference is we come to you and don't try to upsell you work you don't need.</p>
-      </div>
-
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">Can you do serious diagnostics at my home?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">Absolutely. We arrive fully equipped with professional diagnostic equipment. We can diagnose the vast majority of vehicle issues without needing a workshop. If something truly can't be done mobile, we'll tell you honestly.</p>
-      </div>
-
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">Can you handle complex jobs, or just small repairs?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">We handle servicing, brakes, batteries, diagnostics, repairs, and fleet support. Big jobs or small, we're equipped and qualified. Check our services page for the full scope.</p>
-      </div>
-
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">How does transparent pricing work?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">We provide a detailed estimate before any work starts. You approve it or decline. If extra issues are discovered during the job, we call and explain before proceeding. No surprises, no hidden charges.</p>
-      </div>
-
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">What areas do you cover?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">We serve South Wales — from Cardiff to Swansea, Caerphilly to the Valleys, and across the region. Check our coverage map to confirm your postcode.</p>
-      </div>
-
-      <div class="mb-6 pb-6 border-b" style="border-color:rgba(255,255,255,0.06);">
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">Do you work with businesses and fleets?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">Yes. We offer fleet support and repeat-customer arrangements. We can schedule regular maintenance for business vehicles at your premises. Get in touch for details.</p>
-      </div>
-
-      <div>
-        <h3 class="headline text-tc-white font-semibold text-lg mb-3" style="letter-spacing:-0.02em;">How do I book? Can I see your calendar?</h3>
-        <p class="text-tc-alloy text-sm leading-relaxed">Use the booking form below to request a slot. You'll see real availability and can choose the date and time that works for you. It's transparent, no waiting for callbacks or vague "we'll let you know" responses.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 9: FINAL CTA — CONFIDENCE + TRUST -->
-<section class="py-16 lg:py-20" style="background:#141414;">
-  <div class="max-w-[900px] mx-auto px-6 text-center">
-    <div class="reveal">
-      <h2 class="headline font-bold text-tc-white mb-6" style="font-size:clamp(1.75rem,4vw,2.5rem); letter-spacing:-0.03em;">Ready to book with a mechanic service built on trust?</h2>
-      <p class="text-tc-steel text-lg mb-10 max-w-[640px] mx-auto">See our calendar. Choose your slot. Get professional service at your door.</p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#booking" class="px-8 py-4 rounded text-tc-white font-semibold inline-flex items-center justify-center gap-2 transition-all hover:gap-3" style="background:#C1121F; font-family:'Space Grotesk',sans-serif;">Book With TORQ Cymru <span>→</span></a>
-        <a href="tel:+441234567890" class="px-8 py-4 rounded border text-tc-white font-semibold inline-flex items-center justify-center gap-2 transition-all hover:gap-3" style="border-color:rgba(255,255,255,0.2); font-family:'Space Grotesk',sans-serif;">Call Us <span>→</span></a>
+      <div class="p-7 lg:p-8 rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+        <div class="w-8 h-8 rounded flex items-center justify-center mb-5 lg:mb-6" style="background:rgba(193,18,31,0.15);">
+          <svg class="w-4 h-4 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        </div>
+        <h3 class="headline font-semibold text-tc-white text-xl mb-3" style="letter-spacing:-0.02em;">We're Local</h3>
+        <p class="text-tc-alloy leading-relaxed">Welsh-born, Welsh-based. We serve our communities with the standards they deserve — not faceless national chains.</p>
       </div>
     </div>
   </div>
@@ -917,20 +561,8 @@
       <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
         <img src="assets/work/job-4.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
       </div>
-      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
+      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border lg:col-span-1 sm:col-span-2 lg:col-start-2" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
         <img src="assets/work/job-5.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <img src="assets/work/job-6.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <img src="assets/work/job-7.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <img src="assets/work/job-8.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="work-card relative aspect-[4/3] overflow-hidden rounded border" style="background:#1C1C1C; border-color:rgba(255,255,255,0.06);">
-        <img src="assets/work/job-9.jpeg" alt="Recent work — completed by TORQ Cymru technicians" loading="lazy" class="w-full h-full object-cover">
       </div>
     </div>
   </div>
@@ -1006,39 +638,85 @@
         <p class="text-tc-alloy">Tell us what you need. We'll be in touch with timing and a clear estimate.</p>
       </div>
       <form id="bookingForm" class="reveal space-y-4" novalidate>
-        <div>
-          <label for="bf-name" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Your Name <span class="text-tc-red">*</span></label>
-          <input id="bf-name" name="name" type="text" required aria-required="true" autocomplete="name" placeholder="e.g. James Morgan" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+        <!-- Customer -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-name" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Your Name <span class="text-tc-red">*</span></label>
+            <input id="bf-name" name="name" type="text" required aria-required="true" autocomplete="name" placeholder="e.g. James Morgan" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-phone" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Phone <span class="text-tc-red">*</span></label>
+            <input id="bf-phone" name="phone" type="tel" required aria-required="true" autocomplete="tel" placeholder="07700 900123" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
         </div>
-
         <div>
-          <label for="bf-phone" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Phone <span class="text-tc-red">*</span></label>
-          <input id="bf-phone" name="phone" type="tel" required aria-required="true" autocomplete="tel" placeholder="07700 900123" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
-        </div>
-
-        <div>
-          <label for="bf-email" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Email <span class="text-tc-red">*</span></label>
+          <label for="bf-email" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Email <span class="text-tc-red">*</span></label>
           <input id="bf-email" name="email" type="email" required aria-required="true" autocomplete="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
         </div>
-
-        <div>
-          <label for="bf-vehicle" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Vehicle <span class="text-tc-red">*</span></label>
-          <input id="bf-vehicle" name="vehicle" type="text" required aria-required="true" placeholder="e.g. VW Golf 2019" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-postcode" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Postcode <span class="text-tc-red">*</span></label>
+            <input id="bf-postcode" name="postcode" type="text" required aria-required="true" autocomplete="postal-code" placeholder="CF10 1AA" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-reg" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Vehicle Reg <span class="text-tc-red">*</span></label>
+            <input id="bf-reg" name="reg" type="text" required aria-required="true" placeholder="AB12 CDE" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
         </div>
 
-        <div>
-          <label for="bf-issue" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Issue / Service Required <span class="text-tc-red">*</span></label>
-          <textarea id="bf-issue" name="issue" rows="3" required aria-required="true" placeholder="What needs attention? E.g. Brake service, diagnostic, battery, etc." class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors resize-none" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);"></textarea>
+        <!-- Vehicle -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-make" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Make <span class="text-tc-red">*</span></label>
+            <input id="bf-make" name="make" type="text" required aria-required="true" placeholder="Vauxhall" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-model" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Model <span class="text-tc-red">*</span></label>
+            <input id="bf-model" name="model" type="text" required aria-required="true" placeholder="Corsa" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="bf-year" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Year <span class="text-tc-red">*</span></label>
+            <input id="bf-year" name="year" type="text" required aria-required="true" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="2018" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          </div>
+          <div>
+            <label for="bf-fuel" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Fuel <span class="text-tc-red">*</span></label>
+            <select id="bf-fuel" name="fuel" required aria-required="true" class="w-full px-4 py-3 rounded border text-tc-white text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+              <option value="" disabled selected>Select fuel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Electric">Electric</option>
+            </select>
+          </div>
         </div>
 
+        <!-- Services -->
         <div>
-          <label for="bf-postcode" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Postcode <span class="text-tc-red">*</span></label>
-          <input id="bf-postcode" name="postcode" type="text" required aria-required="true" autocomplete="postal-code" placeholder="CF10 1AA" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm uppercase focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          <label class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Services <span class="text-tc-red">*</span> <span class="text-tc-alloy/60 normal-case">(select one or more)</span></label>
+          <div id="bf-services" class="flex flex-wrap gap-2" role="group" aria-label="Services required">
+            <!-- chips injected on load; static fallback below -->
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Interim Service" class="sr-only"><span class="bf-chip-label">Interim Service</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Full Service" class="sr-only"><span class="bf-chip-label">Full Service</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="MOT Preparation" class="sr-only"><span class="bf-chip-label">MOT Preparation</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Brakes &amp; Pads" class="sr-only"><span class="bf-chip-label">Brakes &amp; Pads</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Diagnostics" class="sr-only"><span class="bf-chip-label">Diagnostics</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Battery" class="sr-only"><span class="bf-chip-label">Battery</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Repair" class="sr-only"><span class="bf-chip-label">Repair</span></label>
+            <label class="bf-chip cursor-pointer"><input type="checkbox" name="services" value="Other" class="sr-only"><span class="bf-chip-label">Other</span></label>
+          </div>
         </div>
 
+        <!-- Booking + notes -->
         <div>
-          <label for="bf-time" class="block text-tc-red text-xs mb-1.5 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Preferred Time <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
-          <input id="bf-time" name="preferredTime" type="text" placeholder="e.g. Morning, Afternoon, This Week" class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);">
+          <label for="bf-date" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Preferred Date <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
+          <input id="bf-date" name="preferredDate" type="date" class="w-full px-4 py-3 rounded border text-tc-white text-sm focus:outline-none focus:border-tc-red/50 transition-colors" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08); color-scheme:dark;">
+          <p id="bf-date-msg" class="hidden text-tc-red text-xs mt-1.5"></p>
+        </div>
+        <div>
+          <label for="bf-notes" class="block text-tc-alloy text-xs mb-1.5 uppercase tracking-wide" style="font-family:'Space Grotesk',sans-serif;">Notes <span class="text-tc-alloy/60 normal-case">(optional)</span></label>
+          <textarea id="bf-notes" name="notes" rows="3" placeholder="Any extra detail — e.g. warning lights, recent work, where the vehicle is parked." class="w-full px-4 py-3 rounded border text-tc-white placeholder-tc-alloy/40 text-sm focus:outline-none focus:border-tc-red/50 transition-colors resize-none" style="background:#1C1C1C; border-color:rgba(255,255,255,0.08);"></textarea>
         </div>
 
         <!-- Status nodes -->
@@ -1339,9 +1017,7 @@
     toggle.addEventListener('click', openMenu);
     closeBtn && closeBtn.addEventListener('click', closeMenu);
     backdrop && backdrop.addEventListener('click', closeMenu);
-    menu.querySelectorAll('a.menu-link').forEach(a => a.addEventListener('click', (e) => {
-      if (a.getAttribute('href').startsWith('#')) closeMenu();
-    }));
+    menu.querySelectorAll('a.menu-link').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   })();
 
@@ -1381,7 +1057,8 @@
     services: [
       "Interim Service",
       "Full Service",
-      "Brakes",
+      "MOT Preparation",
+      "Brakes & Pads",
       "Diagnostics",
       "Battery",
       "Repair",
@@ -1505,29 +1182,42 @@
     clearError();
 
     const fd = new FormData(form);
+    const services = fd.getAll("services");
 
-    // Website form: simple validation for required fields only
-    const required = ["name", "phone", "email", "vehicle", "issue", "postcode"];
+    const required = ["name", "phone", "email", "postcode", "reg", "make", "model", "year", "fuel"];
     for (const key of required) {
       const v = (fd.get(key) || "").toString().trim();
       if (!v) { showError("Please complete all required fields."); return; }
     }
-
     const email = (fd.get("email") || "").toString().trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("Please enter a valid email address."); return; }
+    const year = (fd.get("year") || "").toString().trim();
+    if (!/^[0-9]{4}$/.test(year)) { showError("Please enter a 4-digit year."); return; }
+    if (services.length === 0) { showError("Please select at least one service."); return; }
+
+    const preferredDate = (fd.get("preferredDate") || "").toString().trim();
+    if (preferredDate && fullDates.has(preferredDate)) {
+      showError(BOOKING_CONFIG.copy.dayFullError);
+      return;
+    }
 
     const payload = {
-      name:           (fd.get("name") || "").toString().trim(),
-      phone:          (fd.get("phone") || "").toString().trim(),
-      email:          email,
-      vehicle:        (fd.get("vehicle") || "").toString().trim(),
-      issue:          (fd.get("issue") || "").toString().trim(),
-      postcode:       (fd.get("postcode") || "").toString().trim().toUpperCase(),
-      preferredTime:  (fd.get("preferredTime") || "").toString().trim(),
-      source:         BOOKING_CONFIG.sourceTag,
-      stage:          "NEW_ENQUIRY",
-      createdAt:      Date.now()
+      name:     (fd.get("name")     || "").toString().trim(),
+      phone:    (fd.get("phone")    || "").toString().trim(),
+      email:    email,
+      postcode: (fd.get("postcode") || "").toString().trim().toUpperCase(),
+      reg:      (fd.get("reg")      || "").toString().trim().toUpperCase(),
+      make:     (fd.get("make")     || "").toString().trim(),
+      model:    (fd.get("model")    || "").toString().trim(),
+      year:     year,
+      fuel:     (fd.get("fuel")     || "").toString(),
+      services: services.map(s => s.toString()),
+      notes:    (fd.get("notes")    || "").toString().trim(),
+      source:   BOOKING_CONFIG.sourceTag,
+      stage:    "NEW_ENQUIRY",
+      createdAt: Date.now()
     };
+    if (preferredDate) payload.preferredDate = preferredDate;
 
     submitBtn.disabled = true;
     const originalLabel = submitBtn.textContent;
