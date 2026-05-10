@@ -1484,6 +1484,11 @@
   const submitBtn = document.getElementById("bf-submit");
   const successCard = document.getElementById("bf-success");
 
+  // Portal redirect URL (local dev vs production)
+  const PORTAL_URL = location.hostname === "localhost" || location.protocol === "file:"
+    ? "file:///Users/shanestokes/Desktop/torq-repo/portal.html"
+    : "https://torqcymru-portal.web.app"; // Update with live portal URL when deployed
+
   function showError(msg) {
     errorBox.textContent = msg;
     errorBox.classList.remove("hidden");
@@ -1541,6 +1546,11 @@
       form.classList.add("hidden");
       successCard.classList.remove("hidden");
       successCard.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Redirect to customer portal after 2 seconds
+      setTimeout(() => {
+        window.location.href = PORTAL_URL;
+      }, 2000);
     } catch (err) {
       console.error("[booking] write failed", err);
       showError(mapError(err));
