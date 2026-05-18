@@ -764,3 +764,44 @@ Provide portal code location + app settings structure, ask me to:
 2. Implement auto-sync mechanism for services/addons
 3. Test add/edit/remove flow
 4. Verify responsive display at all breakpoints
+
+---
+
+## Session Notes — 2026-05-18 (Higgsfield Hero Wire-Up)
+
+### What landed
+- New hero asset: `assets/higgsfield/hero-mobile-mechanic-driveway.webp` (1920×1037, q85 WebP, 224KB)
+  - Source: Seedream 4.5 "engine-focus #3" winner from `~/Desktop/torq-hero-review/` sprint
+  - Plate text **`T0RQ 2026`** regenerated **in-image** via Flux Kontext Max (image-to-image edit, not an overlay)
+- Hero section in `index.html`: red decorative glow replaced with full-bleed photo + left-heavy dark gradient overlay (mobile = bottom-weighted variant)
+- `min-h` added to the hero section so tablet/mobile get full vertical room (was previously squished — only `lg:` had min-h)
+- Headline + subhead gain `text-shadow` for legibility on the photo; subhead colour bumped from `text-tc-alloy` to `text-tc-white/85`
+- Castle silhouette, nav, badge, headline copy, CTAs, trust bar — all preserved
+- Deploy guardrails added in `package.json`:
+  - `npm run deploy:preview` → `netlify deploy --dir=.`
+  - `npm run deploy:prod:manual` → exits 1 with an explicit-approval message (prevents typo-prod-deploys)
+
+### Verification
+- Screenshot-verified at **390 / 768 / 1440** (2 rounds, console-clean apart from preexisting favicon 404)
+- Netlify preview deployed and live; hero WebP returns HTTP 200 at the expected path; deployed HTML references it exactly once
+- Preview URL: <https://6a0b21c84ad16b20739cb3e2--eloquent-gelato-d5fe9a.netlify.app>
+
+### Commits on `visual/higgsfield-asset-sprint`
+- `debf854` feat(hero): wire Seedream hero with native T0RQ 2026 plate edit
+- `e055391` chore(scripts): add safe deploy scripts + ignore local dev tools
+
+### What was NOT done (intentional)
+- ❌ Push to `origin` — branch is local-only, awaiting Shane's go-ahead
+- ❌ Merge to `master` — awaiting Shane's go-ahead
+- ❌ Production deploy — preview only
+- ❌ Other hero asset variants (diagnostics, trust) — out of scope this session
+
+### Notes for the next session
+- `.netlify/state.json` had a stale siteId from a prior session pointing at a deleted site. Relinked to `eloquent-gelato-d5fe9a` (id `4706d692-11a0-4f98-995f-b73fa3703fda`). If this recurs, run `netlify unlink && netlify link --id 4706d692-11a0-4f98-995f-b73fa3703fda`.
+- Higgsfield credits: 5.56 → 2.56 (Flux Kontext upcharged ~2× over preflighted estimate)
+- Untracked, pre-existing from earlier sprint: `assets/work/job-9-plate-masked.jpeg`, `assets/work/job-9-redacted.jpeg` — decide their fate in a future session.
+
+### To ship to prod
+1. `git push -u origin visual/higgsfield-asset-sprint` (review on GitHub if desired)
+2. Merge to `master` (PR or fast-forward — your call)
+3. `netlify deploy --prod` from `master`
