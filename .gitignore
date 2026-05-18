@@ -3,3 +3,7 @@
 node_modules/
 .claude/CLAUDE.local.md
 .claude/settings.local.json
+
+# Local dev tools (Puppeteer screenshot + console check)
+console-check.js
+screenshot-hero.js

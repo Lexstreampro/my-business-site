@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "netlify:status": "netlify status",
+    "deploy:preview": "netlify deploy --dir=.",
+    "deploy:prod:manual": "echo 'Production deploy requires explicit approval' && exit 1"
+  },
   "dependencies": {
     "puppeteer": "^24.43.0"
   }
