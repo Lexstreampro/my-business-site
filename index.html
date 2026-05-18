@@ -74,6 +74,41 @@
     .hero-content { opacity: 0; }
     body.entered .hero-content { opacity: 1; animation: hero-in 1s ease both; }
 
+    /* ── Hero photo background + readability overlay ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/higgsfield/hero-mobile-mechanic-driveway.webp');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(10,10,10,0.88) 0%,
+        rgba(10,10,10,0.70) 30%,
+        rgba(10,10,10,0.35) 55%,
+        rgba(10,10,10,0.20) 80%,
+        rgba(10,10,10,0.30) 100%
+      );
+      z-index: 1;
+    }
+    @media (max-width: 640px) {
+      .hero-bg { background-position: 60% 30%; }
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(10,10,10,0.85) 0%,
+          rgba(10,10,10,0.55) 35%,
+          rgba(10,10,10,0.40) 65%,
+          rgba(10,10,10,0.70) 100%
+        );
+      }
+    }
+
     /* ── Preloader ── */
     @keyframes preloader-fade-in {
       from { opacity: 0; }
@@ -332,10 +367,11 @@
 <!-- ═══════════════════════════════════════
      HERO
 ═══════════════════════════════════════ -->
-<section class="relative flex items-center" style="background:#0a0a0a;">
+<section class="relative flex items-center min-h-[68vh] md:min-h-[72vh] lg:min-h-[calc(100vh-112px)]" style="background:#0a0a0a;">
 
-  <!-- Background glow -->
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 55% at 65% 100%, rgba(193,18,31,0.10) 0%, transparent 65%);"></div>
+  <!-- Hero photo background + dark gradient overlay (Higgsfield/Flux Kontext edit, T0RQ 2026 plate) -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
 
   <!-- Hero castle silhouette (bottom strip — separate from preloader castle) -->
   <div class="castle absolute bottom-0 left-0 right-0 w-full pointer-events-none">
@@ -384,10 +420,10 @@
           <span class="w-1.5 h-1.5 rounded-full bg-tc-red" style="animation:pulse 2s infinite;"></span>
           Mobile Service — South Wales
         </div>
-        <h1 class="headline font-bold text-tc-white mb-5 lg:mb-6" style="font-size:clamp(2.4rem,5vw,4rem); line-height:1.04; letter-spacing:-0.03em;">
+        <h1 class="headline font-bold text-tc-white mb-5 lg:mb-6" style="font-size:clamp(2.4rem,5vw,4rem); line-height:1.04; letter-spacing:-0.03em; text-shadow: 0 2px 24px rgba(0,0,0,0.7);">
           Premium Mobile<br>Mechanics<br><span class="text-tc-red">Across Wales.</span>
         </h1>
-        <p class="text-tc-alloy text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 max-w-[440px]">
+        <p class="text-tc-white/85 text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 max-w-[440px]" style="text-shadow: 0 1px 12px rgba(0,0,0,0.7);">
           Servicing, brakes, diagnostics and repairs at your home or workplace — professionally managed from booking to completion.
         </p>
         <div class="flex flex-wrap gap-3 lg:gap-4">
