@@ -835,3 +835,17 @@ Provide portal code location + app settings structure, ask me to:
 - WebP optimisation.
 - Broader premium UI/UX audit.
 - Future operating-system improvement: create a formal workflow spine with DAILY_LOG, DECISIONS, QUALITY_CONTROL, and reusable prompt files.
+
+---
+
+## Session Notes — 2026-05-19 (Services Mobile Strip Affordance)
+
+### Scope
+- Branch: `fix/services-mobile-strip-affordance`.
+- Task: improve mobile clarity of the Services page sticky service strip only.
+- Approved source change: add a mobile-only helper line, `Swipe to see all services`, and a subtle right-edge fade to signal horizontal scrolling.
+
+### Guardrails
+- Existing service buttons preserved.
+- Active/click JavaScript preserved.
+- No metadata, images, hero sections, service wording, push, commit, Netlify command, or deploy included in this patch step.
