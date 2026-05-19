@@ -861,3 +861,15 @@ Provide portal code location + app settings structure, ask me to:
 ### Patch prepared
 - Changed the helper and fade visibility classes from `lg:hidden` to `md:hidden` in `services.html`.
 - No service wording, metadata, JavaScript, chip contrast, layout spacing, images, push, commit, Netlify command, or deploy included.
+
+---
+
+## Session Notes — 2026-05-19 (Services Top-Fold Spacing)
+
+### Scope
+- Branch: `polish/services-top-fold-spacing`.
+- Task: tighten the Services page top-fold rhythm so the hero, sticky services strip, proof cards, stats, and How It Works area feel less empty.
+
+### Patch prepared
+- Adjusted only approved spacing utility classes in `services.html`.
+- No service wording, metadata, JavaScript, chip contrast, card styling, images, push, commit, Netlify command, or deploy included.
