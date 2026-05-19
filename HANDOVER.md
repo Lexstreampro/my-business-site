@@ -886,3 +886,18 @@ Provide portal code location + app settings structure, ask me to:
 - `services.html` patched with homepage-style hover rhythm (`group hover:border-tc-red/30 transition-all duration-300`) on 15 cards across Mobile vs Garage, Trust Stats, How It Works, and main service detail card groups.
 - No copy, CTA, icon, padding, border radius, base colour, service ID, image, JavaScript, metadata, Phase 2 spacing, hero, sticky nav, commit, push, merge, or deploy.
 - Awaiting review/commit approval.
+
+### Patch shipped
+- Committed as `ca98712 polish(services): align card hover rhythm` on `polish/services-card-hover-rhythm`. Not merged, pushed, or deployed.
+
+### Follow-up — hover-effect fix (Option A, NOT committed)
+- Visual verification of `ca98712` found the inline `border-color:rgba(255,255,255,0.06)` on every affected card was blocking the Tailwind `hover:border-tc-red/30` rule by CSS specificity (inline beats class:hover), making the hover effect inert.
+- Fix applied on this branch: removed only the inline `border-color:rgba(255,255,255,0.06);` declaration from the same 15 Phase 3 cards. Inline `background:#1C1C1C` preserved.
+- No copy, CTA, icon, padding, border radius, service ID, image, JavaScript, metadata, Phase 2 spacing, hero, sticky nav, or any non-Phase-3 card touched.
+- No commit yet. No merge. No push. No deploy.
+
+### Follow-up refinement — at-rest border restored (NOT committed)
+- Removing the inline `border-color` exposed Tailwind CDN's preflight default (`rgb(229,231,235)` / `gray-200`) — a visible light-grey outline on every dark card. Regression against the dark luxury aesthetic.
+- Refined fix: added `border-white/5` (`rgba(255,255,255,0.05)`) to the same 15 Phase 3 cards. Pattern is now `border border-white/5 hover:border-tc-red/30 transition-all duration-300`.
+- Class specificity is lower than `:hover`, so the hover rule still wins. At-rest border returns to a subtle whisper close to the original 0.06.
+- No commit, merge, push, or deploy.
