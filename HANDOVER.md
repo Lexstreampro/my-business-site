@@ -805,3 +805,32 @@ Provide portal code location + app settings structure, ask me to:
 1. `git push -u origin visual/higgsfield-asset-sprint` (review on GitHub if desired)
 2. Merge to `master` (PR or fast-forward — your call)
 3. `netlify deploy --prod` from `master`
+
+---
+
+## Session Notes — 2026-05-19 (Live Site Safety + Services Polish)
+
+### What landed
+- `master` confirmed synced with `origin/master` at `dfac4b2`.
+- Removed stale homepage backup: `cad32c2`.
+- Cropped `job-2` recent-work background for privacy: `6dea43f`.
+- Fixed homepage services parity with the services page: `ed4478c`.
+- Standardised services image aspect ratios: `0b89cc7`.
+- Improved service icon meaning: `dfac4b2`.
+
+### Deployment / production note
+- No Netlify deploy was run in this session unless later verified otherwise.
+- Website is live, but GitHub commits only affect production after a manual Netlify deploy.
+
+### Outstanding checks
+- Live privacy concern: John's van registration/plate still needs investigation.
+- Mobile UX concern: sticky services strip may not be clear enough because only some services are visible and users must swipe.
+
+### Parked items
+- MOT prep cleanup/removal consistency.
+- AI workflow/self-learning log file.
+- Skills work status check.
+- Services hero / Why TorQ uplift.
+- Higgsfield plan confirmation.
+- WebP optimisation.
+- Broader premium UI/UX audit.
