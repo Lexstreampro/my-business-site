@@ -1,3 +1,17 @@
+> ## ⚠️ Read First — Workflow Spine
+>
+> The permanent workflow spine now lives in five top-level docs. **Read these before acting** in any future session — they supersede ad-hoc instructions and remove the need to re-explain the workflow each time.
+>
+> 1. **[EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md)** — core operating rules, lane map, agent roles, deploy mechanics.
+> 2. **[DECISIONS.md](DECISIONS.md)** — why the rules exist and what has been chosen.
+> 3. **[ISSUE_REGISTER.md](ISSUE_REGISTER.md)** — what is open right now.
+> 4. **[DAILY_LOG.md](DAILY_LOG.md)** — what happened recently.
+> 5. **[QUALITY_CONTROL.md](QUALITY_CONTROL.md)** — gates before commit / preview / production.
+>
+> The session-handover content below remains valid history. Treat it as historical context, not as the operating rulebook.
+
+---
+
 # TORQ Cymru — Session Handover
 
 ## How to use this file
