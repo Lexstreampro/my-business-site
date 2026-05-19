@@ -13,6 +13,7 @@ No live integrations. No deploys. No secrets handled.
 - [x] `.env*` added to root `.gitignore`.
 - [x] `docs/MESSAGING_PLAN.md` created.
 - [x] `docs/MESSAGING_ROLLOUT_CHECKLIST.md` created (this file).
+- [ ] Review and approve customer confirmation and owner alert wording before implementation. See `docs/MESSAGING_PLAN.md` → "Draft SendGrid Email Templates".
 - [ ] Confirm backend lane: **Firebase Cloud Functions + SendGrid** (matches existing plan).
 - [ ] Confirm Firebase Realtime Database rules: `/jobs` allows write for anonymous users, read restricted. Verify in Firebase console (no code change needed if already correct).
 - [ ] Create SendGrid account at https://sendgrid.com (free tier). Do **not** generate or paste an API key yet.

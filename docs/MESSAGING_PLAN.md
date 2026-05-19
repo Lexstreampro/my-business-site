@@ -69,6 +69,103 @@ Would require either (a) moving the booking write through a Netlify Function ins
 
 ---
 
+## Draft SendGrid Email Templates
+
+These are the proposed first-version templates. Wording must be reviewed and approved before any implementation work begins. Placeholders are written as `{{name}}` and will be replaced at send time from the Firebase `/jobs/{jobId}` record.
+
+### 1. Customer confirmation email
+
+**Subject:**
+
+```
+Booking request received — TORQ Cymru
+```
+
+**Body:**
+
+```
+Hi {{customerName}},
+
+Thanks for contacting TORQ Cymru. We've received your booking request and one of the team will review the details promptly.
+
+Your request summary:
+
+Service requested: {{serviceRequested}}
+Vehicle: {{vehicleDetails}}
+Preferred date: {{preferredDate}}
+Postcode area: {{postcode}}
+
+What happens next:
+
+We'll check the information you've provided, confirm whether we can help, and contact you using the phone number or email address supplied with your request.
+
+If your issue is urgent, you can also call us directly on 029 2252 3485.
+
+Thanks again,
+
+TORQ Cymru
+Mobile mechanic services across Caerphilly and South Wales
+029 2252 3485
+torqcymruautomotive@gmail.com
+```
+
+### 2. Owner alert email
+
+**Subject:**
+
+```
+New TORQ Cymru booking request — {{customerName}}
+```
+
+**Body:**
+
+```
+New booking request received.
+
+Customer details:
+
+Name: {{customerName}}
+Phone: {{customerPhone}}
+Email: {{customerEmail}}
+Postcode: {{postcode}}
+
+Vehicle details:
+
+Vehicle: {{vehicleDetails}}
+Registration: {{vehicleRegistration}}
+Mileage: {{mileage}}
+
+Job details:
+
+Service requested: {{serviceRequested}}
+Preferred date: {{preferredDate}}
+Preferred time: {{preferredTime}}
+Customer notes: {{customerNotes}}
+
+Admin check:
+
+Source: Website booking form
+Firebase path: /jobs/{{jobId}}
+Submitted at: {{submittedAt}}
+
+Recommended next step:
+
+Contact the customer, confirm the job details, check availability, and agree the next action before confirming the booking.
+```
+
+### 3. Function behaviour notes
+
+- The customer email must say **received**, not **confirmed**. We are not auto-confirming the booking.
+- Do not promise attendance, availability, or a specific time slot in the customer email.
+- The **owner alert must still send even if the customer email fails**, and vice versa — the two sends are independent, neither blocks the other.
+- The **booking record in Firebase `/jobs` must remain saved even if email sending fails entirely**. The website's success state is independent of the email layer.
+- Logs must not print API keys, auth tokens, full email bodies, or any personal data beyond what is strictly needed for debugging (e.g. log the `jobId` and a SendGrid response code — not the customer's full details).
+- **Sender** should eventually be `TORQ Cymru <noreply@torqcymru.co.uk>` — only after SendGrid sender + domain verification is complete (Phase 3). Until then, no live sends.
+- **Reply-to** should be `torqcymruautomotive@gmail.com` so customer replies land in the existing inbox without needing a new mailbox on `noreply@`.
+- Missing placeholder values must render as a clean fallback (e.g. blank line or `—`), never as the literal `{{placeholder}}` text in a sent email.
+
+---
+
 ## What Waits for DNS
 
 The following cannot proceed until `torqcymru.co.uk` resolves via Cloudflare/Netlify and HTTPS is live:
