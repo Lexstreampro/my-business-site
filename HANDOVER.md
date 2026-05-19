@@ -849,3 +849,15 @@ Provide portal code location + app settings structure, ask me to:
 - Existing service buttons preserved.
 - Active/click JavaScript preserved.
 - No metadata, images, hero sections, service wording, push, commit, Netlify command, or deploy included in this patch step.
+
+---
+
+## Session Notes — 2026-05-19 (Services Mobile Affordance Breakpoint)
+
+### Scope
+- Branch: `fix/services-mobile-affordance-breakpoint`.
+- Task: limit the Services sticky strip swipe helper and right-edge fade to true mobile widths only.
+
+### Patch prepared
+- Changed the helper and fade visibility classes from `lg:hidden` to `md:hidden` in `services.html`.
+- No service wording, metadata, JavaScript, chip contrast, layout spacing, images, push, commit, Netlify command, or deploy included.
