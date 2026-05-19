@@ -901,3 +901,23 @@ Provide portal code location + app settings structure, ask me to:
 - Refined fix: added `border-white/5` (`rgba(255,255,255,0.05)`) to the same 15 Phase 3 cards. Pattern is now `border border-white/5 hover:border-tc-red/30 transition-all duration-300`.
 - Class specificity is lower than `:hover`, so the hover rule still wins. At-rest border returns to a subtle whisper close to the original 0.06.
 - No commit, merge, push, or deploy.
+
+---
+
+## Session Notes — 2026-05-19 (Homepage Card Hover/Rhythm Consistency — Phase 4)
+
+### Scope
+- Branch: `polish/homepage-card-hover-rhythm`.
+- Task: bring the homepage card system into rhythm with the Phase 3 Services pattern. Tailwind owns both the resting and hover border states; inline `border-color` removed from approved card groups so `hover:border-tc-red/30` is no longer blocked by specificity.
+
+### Patch prepared
+- `index.html` patched on 25 homepage cards across 5 groups (counts verified pre-edit):
+  - **A. Services preview grid** ("Every service. At your door.") — 6 cards (lines 544–589). These already declared `hover:border-tc-red/30 transition-all duration-300` but the inline `border-color` made the hover inert; added `border-white/5` and stripped the inline border-color so the existing hover declaration becomes live.
+  - **B. "Why TORQ" trust pillars** — 5 cards (lines 616–632).
+  - **C. "The TORQ Cymru difference"** — 6 cards (lines 706–746).
+  - **D. "Built for South Wales" + "Trusted by drivers"** — 5 cards (lines 888, 894, 912, 918, 924).
+  - **F. Review cards** — 3 cards (lines 1049–1077).
+- Final pattern on every patched card: `class="… rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300 …"` with `style="background:#1C1C1C;"`. No `!important`, no inline border-color, no shared custom CSS class, no extra style blocks.
+- `group` preserved only where it already existed (A). Not added to B/C/D/F because none of those cards have group-hover children.
+- Out of scope and left unchanged: work-gallery `.work-card` image tiles (kept image-scale hover; border-hover needs a separate design decision), FAQ dividers, Frustrations/Comparison list rows, App CTA panel, Coverage map and town badges, booking form fields, header/nav/menu borders, footer borders, `services.html`, JavaScript, images, metadata.
+- No commit, merge, push, or deploy.
