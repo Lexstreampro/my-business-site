@@ -10,3 +10,6 @@ screenshot-hero.js
 
 # Local export outputs
 exports/
+
+# Secrets — never commit any environment files
+.env*
