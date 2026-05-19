@@ -873,3 +873,16 @@ Provide portal code location + app settings structure, ask me to:
 ### Patch prepared
 - Adjusted only approved spacing utility classes in `services.html`.
 - No service wording, metadata, JavaScript, chip contrast, card styling, images, push, commit, Netlify command, or deploy included.
+
+---
+
+## Session Notes — 2026-05-19 (Services Card Hover / Rhythm — Phase 3)
+
+### Scope
+- Branch: `polish/services-card-hover-rhythm`.
+- Task: bring Services page card rhythm closer to homepage with restrained hover/border/transition behaviour.
+
+### Patch prepared
+- `services.html` patched with homepage-style hover rhythm (`group hover:border-tc-red/30 transition-all duration-300`) on 15 cards across Mobile vs Garage, Trust Stats, How It Works, and main service detail card groups.
+- No copy, CTA, icon, padding, border radius, base colour, service ID, image, JavaScript, metadata, Phase 2 spacing, hero, sticky nav, commit, push, merge, or deploy.
+- Awaiting review/commit approval.
