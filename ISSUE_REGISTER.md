@@ -55,12 +55,14 @@ When closing an issue: change status to `Resolved`, add resolution date and the 
 
 ## ISSUE 5 — Workflow instructions currently too repetitive
 
-- **Status:** In progress
+- **Status:** Resolved
 - **Priority:** High
 - **Opened:** 2026-05-19
+- **Resolved:** 2026-05-19
+- **Resolution:** Workflow spine merged to `master` via PR #1 (commits `ee72da6`, merge `5268bb4`). Five spine docs (`EXECUTION_PATTERNS.md`, `DECISIONS.md`, `ISSUE_REGISTER.md`, `DAILY_LOG.md`, `QUALITY_CONTROL.md`) plus a pointer block in `HANDOVER.md` now live in the repo root. Future sessions cold-start from these docs without re-explaining the workflow.
 - **Notes:** Need permanent workflow docs to reduce token waste across Claude/ChatGPT/Gemini.
 - **Owner / Lane:** Lane 2 (this docs spine)
-- **Next action:** Spine files created 2026-05-19. Close once Shane confirms future sessions can boot from these docs without re-explaining workflow.
+- **Next action:** None. Re-open only if a future session shows the spine docs are insufficient.
 
 ---
 

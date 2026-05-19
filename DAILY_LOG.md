@@ -35,6 +35,33 @@ Each entry: date, lane, action, outcome, follow-ups.
   - ISSUE 4 — Mike's list pending.
   - ISSUE 5 — Workflow instructions currently too repetitive (this spine addresses it).
 
+**Lane 1 — Deployment Integrity Restored**
+- Production manually deployed to Netlify at deploy ID `6a0ce6363e1c1b0d663aa533`.
+- Live hover-token verification passed: homepage 28/28, services 15/15.
+- `job-9.jpeg` plate-redacted asset remains live and md5 matches local.
+- Local repo remains clean at `b02706d`.
+- Remaining open issue: Recent Work green edge bleed, now treated as separate asset-quality investigation, not deployment drift.
+
+**Lane 2 — Workflow Spine Endpoint Reached**
+- Spine commit `ee72da6` ("docs: add workflow spine and handover pointer") opened as PR #1 against `master`.
+- PR #1 reviewed (6 files, +369 / −0, MERGEABLE) and merged via `gh pr merge 1 --merge` → merge commit `5268bb4`.
+- `gh pr merge --delete-branch` failed local cleanup because `master` was checked out in the main worktree at the time. Remote branch deletion was a side-effect skip, not a true failure.
+- Manual cleanup completed: `git push origin --delete docs/site-execution-patterns`, `git worktree remove /Users/shanestokes/Desktop/torq-docs-spine`, `git branch -d docs/site-execution-patterns`.
+- Main worktree fast-forwarded `b02706d..5268bb4`; working tree clean, in sync with `origin/master`.
+- Final state — five spine docs (`DAILY_LOG.md`, `ISSUE_REGISTER.md`, `DECISIONS.md`, `QUALITY_CONTROL.md`, `EXECUTION_PATTERNS.md`) + `HANDOVER.md` pointer block now live on `master` in the main worktree and on GitHub.
+- Closes [ISSUE 5](ISSUE_REGISTER.md) — Workflow instructions too repetitive.
+- New entry recorded in [DECISIONS.md](DECISIONS.md) covering the `gh pr merge --delete-branch` caveat for future sessions.
+- No deploy, no Netlify command, no website source touched in Lane 2.
+
+**Lane 2 — Stale local branches (flagged, not touched)**
+- The following local branches remain after Lane 2 cleanup and may be candidates for separate review:
+  - `docs/elite-claude-execution-protocol`
+  - `fix/services-mobile-affordance-breakpoint`
+  - `polish/homepage-card-hover-rhythm`
+  - `polish/services-card-hover-rhythm`
+  - `polish/services-top-fold-spacing`
+- Out of Lane 2 scope. No action taken.
+
 ---
 
 ## Log Format Going Forward

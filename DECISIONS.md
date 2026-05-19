@@ -52,6 +52,33 @@ Format:
 
 ---
 
+## 2026-05-19 — Spine merged to `master` via true-merge commit, not squash
+
+- **Context:** Lane 2 needed to land six docs (five new + HANDOVER pointer) on `master` while preserving the spine commit's identity for future audit/git-blame.
+- **Choice:** `gh pr merge 1 --merge` (true merge commit `5268bb4` with parents `b02706d` + `ee72da6`). Rejected `--squash` (would have collapsed the spine commit's SHA, breaking the `ee72da6` reference in [DAILY_LOG.md](DAILY_LOG.md) and [ISSUE_REGISTER.md](ISSUE_REGISTER.md)) and `--rebase` (no value for a single-commit docs PR).
+- **Consequence:** `ee72da6` remains a first-class commit on `master`. Future docs PRs that contain a single semantic commit should use `--merge`; multi-commit cleanup PRs may use `--squash` if the individual SHAs are not referenced elsewhere.
+
+---
+
+## 2026-05-19 — `gh pr merge --delete-branch` caveat with multiple worktrees
+
+- **Context:** Running `gh pr merge 1 --merge --delete-branch` from inside the docs worktree failed with `fatal: 'master' is already used by worktree at '/Users/shanestokes/Desktop/my-business-site'`. The remote merge succeeded; the branch-deletion side-effect did not. Remote branch was also left in place.
+- **Choice:** Document the limitation and use a two-step cleanup when multiple worktrees exist:
+  1. Merge from any worktree: `gh pr merge <N> --merge` (no `--delete-branch`).
+  2. Delete remote: `git push origin --delete <branch>`.
+  3. Delete local branch + worktree from the **main** worktree (the one holding `master`): `git worktree remove <path>` then `git branch -d <branch>`.
+- **Consequence:** Avoids a partial-cleanup state where the PR is merged but the branch lingers on the remote. Update the same playbook into any future deploy/merge runbook. Rejected: switching the docs worktree to a temp branch first — adds steps for no benefit when the two-step cleanup is faster.
+
+---
+
+## 2026-05-19 — Lane 2 closed; spine is the canonical operating brief
+
+- **Context:** Spine merged, cleanup complete, no remaining Lane 2 work items. Need to make it unambiguous that future sessions read the spine rather than ad-hoc instructions.
+- **Choice:** Lane 2 is **closed** as of 2026-05-19. The five spine files + HANDOVER pointer are the canonical cold-start brief. Any new "how the workflow works" question is answered by amending [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md), not by long prompts. Re-opening Lane 2 requires an explicit controller decision and a new branch.
+- **Consequence:** Future sessions boot from the spine in seconds. Repetitive workflow prompts are no longer required. [ISSUE 5](ISSUE_REGISTER.md) closed.
+
+---
+
 ## Adding New Decisions
 
 Append below with date heading. Never edit or remove past decisions — supersede them with a new entry that references the old one ("Supersedes 2026-05-19 — Adopt …").
