@@ -834,3 +834,4 @@ Provide portal code location + app settings structure, ask me to:
 - Higgsfield plan confirmation.
 - WebP optimisation.
 - Broader premium UI/UX audit.
+- Future operating-system improvement: create a formal workflow spine with DAILY_LOG, DECISIONS, QUALITY_CONTROL, and reusable prompt files.
