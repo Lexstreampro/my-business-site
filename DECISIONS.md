@@ -79,6 +79,35 @@ Format:
 
 ---
 
+## 2026-05-20 — Lossless `jpegtran` crop is the canonical fix for JPEG edge artefacts
+
+- **Context:** Four Recent Work source JPEGs had baked-in green/magenta chroma-tear columns at the right edge (Apr 29 batch). First repair pass used PIL re-encode (`quality=82`, `subsampling=4:2:0`) — produced files 2.3× original size (+1.28 MB total page weight) because PIL/libjpeg-turbo can't match the original `mozjpeg`-style compression. Controller rejected. Second pass used `jpegtran` lossless DCT-domain crop, which keeps the original DCT coefficients of the retained region untouched and only rewrites the JPEG container.
+- **Choice:** Canonical command for JPEG edge fixes on this site:
+  ```
+  jpegtran -copy none -optimize -progressive -crop WxH+0+0 -outfile <out> <in>
+  ```
+  - `-copy none` strips ICC + EXIF; browsers default to sRGB which matches all current source images. Required to keep file growth at ~+25% instead of ~+80% with `-copy all`.
+  - `-optimize -progressive` rebuilds the Huffman table for smaller output.
+  - Crop X/Y must be MCU-aligned on the top/left (multiples of 16 for 4:2:0 JPEGs); right/bottom can be arbitrary. Using `+0+0` always satisfies the constraint when removing right/bottom only.
+  - Verify removal with edge-pixel G/R ratio: should sit near 1.0 (`(R, G, B)` mean of rightmost 3px column).
+- **Consequence:** No lossy re-encoding on top of already-lossy source. File growth bounded to ~+25% per image. Rejected: PIL re-encode (lossy, much larger files), `-copy all` (preserves ICC but +80% size; not needed when source is already sRGB), installing `mozjpeg` (extra dependency without controller approval).
+
+---
+
+## 2026-05-20 — Cross-lane stash-to-master workflow when working tree carries another lane's docs
+
+- **Context:** Lane 2 closure docs (DAILY_LOG.md, DECISIONS.md, ISSUE_REGISTER.md) appeared in the working tree of the Lane 1 fix branch because Lane 1 was the checked-out branch when Lane 2 finished. Mixing them into the Lane 1 image-only commit would have re-blended what the controller had explicitly separated.
+- **Choice:** Documented separation procedure:
+  1. From the contaminated branch, stash *only the foreign-lane paths* explicitly: `git stash push -m "<reason>" -- <path1> <path2> ...`.
+  2. `git checkout master && git pull --ff-only origin master`.
+  3. `git stash pop` (will apply unstaged onto master).
+  4. Stage only the foreign-lane paths, commit with a clear `docs:` prefix, push.
+  5. Return to the original feature branch: `git checkout <feature-branch>`.
+  6. Rebase the feature branch onto the new master tip and `git push --force-with-lease`.
+- **Consequence:** Each commit on master carries exactly one lane's intent. PR diffs stay minimal and reviewable. Rejected: amending the foreign-lane docs into the Lane 1 commit (re-mixes lanes), creating a separate PR branch for the docs (overkill for a docs-only commit that has no review surface), or asking the user to manually relocate the edits.
+
+---
+
 ## Adding New Decisions
 
 Append below with date heading. Never edit or remove past decisions — supersede them with a new entry that references the old one ("Supersedes 2026-05-19 — Adopt …").

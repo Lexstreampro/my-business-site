@@ -6,6 +6,26 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ---
 
+## 2026-05-20
+
+**Lane 1 — Recent Work green-edge bleed: diagnosed, fixed, deployed, verified**
+- Root cause confirmed: four source JPEGs (`job-1`, `job-3`, `job-4`, `job-5`) had baked-in green/magenta chroma-tear columns at the right edge (G/R ratios 3.4–16.9× on the source rightmost columns). uRGB profile hypothesis and CSS/container hypotheses both rejected — only the 4 affected images showed bleed; the 5 others rendered clean despite identical CSS.
+- Fix approach (after one rejected pass): lossless DCT-domain crop with `jpegtran -copy none -optimize -progressive -crop 2970x4000+0+0`. Removes right 30px (well above the detected 13–15px minimum-safe crop) without re-encoding the retained pixels.
+- PIL re-encode pass (`quality=82, subsampling=4:2:0`) rejected: produced files 2.3× original size (+1.28 MB total). jpegtran lossless pass produces files only 1.22–1.26× original (+234 KB total — 5.5× smaller delta).
+- Branch `fix/recent-work-green-edge-assets` created from `master`, image commit `ed1a899` made, branch rebased onto current master to become `4679b08`, then fast-forward merged into master. Push: `d93e894..4679b08`.
+- Doc closure separated from image fix per controller policy: stashed working-tree docs, switched to master, applied stash on master, committed docs-only as `d93e894` ("docs: log lane closure and deployment integrity") and pushed before image-branch rebase. Keeps the image PR diff purely binary.
+- Production deploy: `netlify deploy --prod --dir=.` → deploy ID `6a0cf01a36fd6735753eaab7`, state ready, 10 files uploaded, 4.7s build.
+- Live verification: all 5 work images (job-1, job-3, job-4, job-5, job-9) md5-match local; right-edge G/R ratios all 0.95–1.01 (was 3.4–16.9× pre-fix on affected files). `job-9.jpeg` md5 `0e7e29aedf76023384fd9614d52ac61a` unchanged from pre-Lane-1 — plate redaction preserved.
+- Closes [ISSUE 1](ISSUE_REGISTER.md), [ISSUE 2](ISSUE_REGISTER.md), [ISSUE 3](ISSUE_REGISTER.md).
+- New entries recorded in [DECISIONS.md](DECISIONS.md): jpegtran lossless crop pattern, and cross-lane stash-to-master workflow.
+
+**Lane 1 — Final state**
+- `master` local & origin: `4679b08`
+- Production deploy: live at `6a0cf01a36fd6735753eaab7`
+- Lane 1 closed. No further outstanding image, deploy, or hover issues.
+
+---
+
 ## 2026-05-19
 
 **Lane 0 — Site / Card Hover Rhythm**
