@@ -163,12 +163,29 @@
 <!-- ═══════════════════════════════════════
      HERO
 ═══════════════════════════════════════ -->
-<section class="py-16 lg:py-24" style="background:#111111;">
-  <div class="max-w-[1200px] mx-auto px-6">
+<section class="relative py-20 lg:py-28 overflow-hidden" style="background:#0a0a0a;">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 50% at 30% 0%, rgba(193,18,31,0.10), transparent 60%), linear-gradient(180deg, #0a0a0a 0%, #111111 100%);"></div>
+  <div class="relative max-w-[1200px] mx-auto px-6">
     <div class="reveal">
-      <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">Our Services</p>
-      <h1 class="headline font-bold text-tc-white mb-4" style="font-size:clamp(2rem,5vw,3rem); letter-spacing:-0.03em;">Everything Your Vehicle Needs.<br>At Your Door.</h1>
-      <p class="text-tc-alloy text-lg max-w-[600px] leading-relaxed">From routine maintenance to emergency repairs, TORQ Cymru handles every aspect of vehicle care. We bring the expertise to you.</p>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 lg:mb-8 border rounded text-xs text-tc-steel" style="border-color:rgba(193,18,31,0.35); background:rgba(193,18,31,0.06); font-family:'Space Grotesk',sans-serif; letter-spacing:0.07em; text-transform:uppercase;">
+        <span class="w-1.5 h-1.5 rounded-full bg-tc-red"></span>
+        Our Services
+      </div>
+      <h1 class="headline font-bold text-tc-white mb-5 lg:mb-6" style="font-size:clamp(2.4rem,5vw,4rem); line-height:1.04; letter-spacing:-0.03em;">
+        Every service.<br>At your door.<br><span class="text-tc-red">Across South Wales.</span>
+      </h1>
+      <p class="text-tc-white/85 text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 max-w-[560px]">
+        Servicing, brakes, diagnostics, repairs, batteries and fleet support — professionally delivered to your home or workplace.
+      </p>
+      <div class="flex flex-wrap gap-3 lg:gap-4">
+        <a href="index.html#booking" class="headline inline-flex items-center gap-2 bg-tc-red hover:bg-tc-crimson text-white font-semibold px-6 lg:px-7 py-3.5 rounded transition-colors duration-200" style="letter-spacing:-0.02em;">
+          Book Your Vehicle
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="index.html#booking" class="headline inline-flex items-center gap-2 border text-tc-steel hover:text-tc-white hover:border-tc-steel/50 px-6 lg:px-7 py-3.5 rounded transition-colors duration-200" style="border-color:rgba(191,195,199,0.22); letter-spacing:-0.02em;">
+          Get Fast Quote
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -303,43 +320,34 @@
 
     <!-- Brakes -->
     <div id="brakes-pads" class="reveal service-section group p-6 lg:p-8 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C;">
-      <div>
-        <div class="mb-8">
-          <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
-            <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v3M12 16.5v3M4.5 12h3M16.5 12h3"/></svg>
-          </div>
-          <h2 class="headline font-bold text-tc-white mb-4" style="font-size:2rem; letter-spacing:-0.03em;">Brakes</h2>
-          <p class="text-tc-alloy text-base leading-relaxed mb-6">Your brakes are critical. We conduct thorough inspections, replace worn pads, and perform disc work as needed — all at your location. No compromise on safety, no labour shortcuts.</p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex gap-3">
-              <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
-              <span class="text-tc-white">Full brake system inspection</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
-              <span class="text-tc-white">Pad and disc replacement</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
-              <span class="text-tc-white">Brake fluid top-up and bleed</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
-              <span class="text-tc-white">Mobile service — no garage needed</span>
-            </li>
-          </ul>
-          <a href="index.html#booking" class="inline-flex headline bg-tc-red hover:bg-tc-crimson text-white font-semibold px-6 lg:px-7 py-3.5 rounded transition-colors" style="letter-spacing:-0.02em;">
-            Book Brake Service
-          </a>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <div class="rounded-lg overflow-hidden aspect-[3/2]">
-            <img src="assets/services/01-brakes-pads-a.png" alt="Brake pad replacement and inspection" width="1672" height="941" loading="lazy" class="w-full h-full object-cover">
-          </div>
-          <div class="rounded-lg overflow-hidden aspect-[3/2]">
-            <img src="assets/services/01-brakes-pads-b.jpg" alt="Brake system maintenance and inspection" width="5240" height="3493" loading="lazy" class="w-full h-full object-cover">
-          </div>
-        </div>
+      <div class="w-10 h-10 rounded flex items-center justify-center mb-6" style="background:rgba(193,18,31,0.15);">
+        <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v3M12 16.5v3M4.5 12h3M16.5 12h3"/></svg>
+      </div>
+      <h2 class="headline font-bold text-tc-white mb-4" style="font-size:2rem; letter-spacing:-0.03em;">Brakes</h2>
+      <p class="text-tc-alloy text-base leading-relaxed mb-6">Your brakes are critical. We conduct thorough inspections, replace worn pads, and perform disc work as needed — all at your location. No compromise on safety, no labour shortcuts.</p>
+      <ul class="space-y-3 mb-8">
+        <li class="flex gap-3">
+          <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
+          <span class="text-tc-white">Full brake system inspection</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
+          <span class="text-tc-white">Pad and disc replacement</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
+          <span class="text-tc-white">Brake fluid top-up and bleed</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="text-tc-red mt-1" style="font-size:1.25rem;">•</span>
+          <span class="text-tc-white">Mobile service — no garage needed</span>
+        </li>
+      </ul>
+      <a href="index.html#booking" class="inline-flex headline bg-tc-red hover:bg-tc-crimson text-white font-semibold px-6 lg:px-7 py-3.5 rounded transition-colors mb-12" style="letter-spacing:-0.02em;">
+        Book Brake Service
+      </a>
+      <div class="rounded-lg overflow-hidden aspect-[3/2]">
+        <img src="assets/services/01-brakes-pads-a.png" alt="Brake pad replacement and inspection" width="1672" height="941" loading="lazy" class="w-full h-full object-cover">
       </div>
     </div>
 
@@ -349,24 +357,25 @@
         <svg class="w-5 h-5 text-tc-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0L12 2.69z"/></svg>
       </div>
       <h2 class="headline font-bold text-tc-white mb-4" style="font-size:2rem; letter-spacing:-0.03em;">Servicing</h2>
-      <p class="text-tc-alloy text-base leading-relaxed mb-6">Keep your vehicle running smoothly with our three servicing options. We use quality parts, deliver comprehensive care tailored to your needs, and handle everything at your location — no drop-off required.</p>
+      <p class="text-tc-alloy text-base leading-relaxed mb-8">Three servicing tiers, all delivered at your location. Quality parts. Proper inspection. No drop-off needed.</p>
 
-      <!-- Interim Service -->
-      <div class="mb-8">
-        <h3 class="headline font-bold text-tc-white mb-3" style="letter-spacing:-0.02em;">Interim Service</h3>
-        <p class="text-tc-alloy text-base leading-relaxed">Our Interim Service is designed for routine maintenance between major services. We change your engine oil and oil filter, check all fluid levels (coolant, brake fluid, washer fluid), and conduct a basic visual inspection of key components. This keeps your vehicle in good working order and is ideal if you drive moderate distances or want to maintain your car affordably throughout the year.</p>
-      </div>
-
-      <!-- Basic Service -->
-      <div class="mb-8">
-        <h3 class="headline font-bold text-tc-white mb-3" style="letter-spacing:-0.02em;">Basic Service</h3>
-        <p class="text-tc-alloy text-base leading-relaxed">The Basic Service includes everything from the Interim Service, plus we replace your engine air filter and perform a more comprehensive inspection of your vehicle's systems. We examine wear patterns on brake pads and discs, check suspension components, inspect belts and hoses, and assess overall vehicle condition. This service strikes the right balance between thoroughness and cost, making it our most popular choice for regular vehicle maintenance.</p>
-      </div>
-
-      <!-- Full Service -->
-      <div class="mb-8">
-        <h3 class="headline font-bold text-tc-white mb-3" style="letter-spacing:-0.02em;">Full Service</h3>
-        <p class="text-tc-alloy text-base leading-relaxed">Our Full Service is the most comprehensive option we offer and includes everything from the Basic Service, plus replacement of your cabin filter and spark plugs (petrol engines) or fuel filter (diesel engines). We perform an extensive inspection using both visual assessment and specialist tools and testers to check brake condition, suspension wear, fluid condition, and overall vehicle health. This is the ideal service if your vehicle has higher mileage, you haven't serviced in a while, or you want complete peace of mind about your vehicle's condition.</p>
+      <!-- Tier sub-cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="p-5 rounded border border-white/5" style="background:#141414;">
+          <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">Tier 01</p>
+          <h3 class="headline font-bold text-tc-white mb-2" style="letter-spacing:-0.02em;">Interim Service</h3>
+          <p class="text-tc-alloy text-sm leading-relaxed">Engine oil and filter change, fluid level checks, basic visual inspection. Ideal between major services for moderate-mileage drivers.</p>
+        </div>
+        <div class="p-5 rounded border border-white/5" style="background:#141414;">
+          <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">Tier 02</p>
+          <h3 class="headline font-bold text-tc-white mb-2" style="letter-spacing:-0.02em;">Basic Service</h3>
+          <p class="text-tc-alloy text-sm leading-relaxed">Everything in Interim, plus engine air filter replacement and a fuller inspection of brakes, suspension, belts and hoses. Our most popular tier.</p>
+        </div>
+        <div class="p-5 rounded border border-white/5" style="background:#141414;">
+          <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">Tier 03</p>
+          <h3 class="headline font-bold text-tc-white mb-2" style="letter-spacing:-0.02em;">Full Service</h3>
+          <p class="text-tc-alloy text-sm leading-relaxed">Everything in Basic, plus cabin filter and spark plugs (petrol) or fuel filter (diesel), with full diagnostic inspection. Complete peace of mind.</p>
+        </div>
       </div>
 
       <ul class="space-y-3 mb-8">
