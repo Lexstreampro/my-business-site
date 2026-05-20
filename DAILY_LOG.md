@@ -24,6 +24,23 @@ Each entry: date, lane, action, outcome, follow-ups.
 - Production deploy: live at `6a0cf01a36fd6735753eaab7`
 - Lane 1 closed. No further outstanding image, deploy, or hover issues.
 
+**Lane 1 — Services Premium Pass: completed, merged, pushed**
+- Read-only audit produced under controller-approved scope; identified services-page hero flatness, inconsistent card anatomy, prose-heavy Servicing card, and ~14 MB image payload as top issues.
+- Branch `services-premium-pass` created from `master` at `d82dd43`. Single-file scope: `services.html` + screenshot artefacts only.
+- Services hero rebuilt to match homepage tier — branded chip badge with red dot, tri-line H1 (`Every service. / At your door. / Across South Wales.`) at `clamp(2.4rem,5vw,4rem)`, gradient/radial depth, `Book Your Vehicle` + `Get Fast Quote` CTA pair.
+- Brakes card standardised: removed nested wrapper and two-image grid, dropped reference to `01-brakes-pads-b.jpg` (file retained on disk per lane rules), now matches Diagnostics/Repairs/Batteries/Fleet anatomy exactly.
+- Servicing card converted: three prose paragraphs (~120 words each) replaced with a 3-column sub-card grid (`Tier 01/02/03`) on `#141414` background, summaries tightened to ~22 words each.
+- Sticky service nav unchanged — audit re-confirmed it already engages immediately under the hero.
+- Screenshot artefacts updated at 390/768/1440 (Puppeteer full-page); throwaway resize copies in `.claude/screenshots/review/` not committed.
+- Commit `862667c` ("fix(services): improve premium layout and service card consistency") — 4 files, +69 / −60 lines.
+- Visual verification by Shane at three breakpoints confirmed before merge.
+- Fast-forward merge into `master` (`d82dd43..862667c`), no merge commit. Push `d82dd43..862667c master -> master`. `origin/master` now `862667c`.
+- Local branch `services-premium-pass` deleted (merged).
+- No production deploy performed in this lane.
+- Image optimisation parked as a separate possible next lane — needs tool decision (`sips` JPEG vs `cwebp` WebP).
+- Mike's list parked for separate intake — not opened in this thread.
+- `origin/visual/higgsfield-asset-sprint` untouched throughout.
+
 ---
 
 ## 2026-05-19
