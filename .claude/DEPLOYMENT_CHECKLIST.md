@@ -43,25 +43,18 @@ In Firebase Console → Functions → Create/Edit `sendBookingEmails`:
 
 ---
 
-## STEP 3: Swap Phone Number in Website
+## STEP 3: Swap Phone Number in Website — ✅ COMPLETE
 
-In `index.html` and `services.html`:
+Live source already uses `tel:+442922523485` (029 2252 3485) across `index.html` and `services.html`. No swap required.
 
-Run these commands:
+To verify current state:
 
 ```bash
 cd /Users/shanestokes/Desktop/my-business-site
-
-# Replace placeholder with real number (example: +441234567890 → +447700900123)
-sed -i '' 's/tel:+441234567890/tel:+447700900123/g' index.html
-sed -i '' 's/tel:+441234567890/tel:+447700900123/g' services.html
-
-# Verify replacements
-grep -n "tel:+44" index.html
-grep -n "tel:+44" services.html
+grep -n "tel:+44" index.html services.html
 ```
 
-✅ **Verified:** grep shows new number on both files (6+ matches total)
+Expected: all hits show `tel:+442922523485`; no `tel:+441234567890` placeholder remains in live source.
 
 ---
 

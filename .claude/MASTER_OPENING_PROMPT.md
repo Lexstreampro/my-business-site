@@ -34,13 +34,8 @@ You are picking up the TORQ Cymru Automotive website build. We are at the final 
 **You provide:**
 - SendGrid API key (create free account at sendgrid.com if you don't have one)
 
-### Task 2: Phone Number Swap
-**What:** Replace `tel:+441234567890` with real business number
-
-**Where:** Search both `index.html` and `services.html`
-
-**You provide:**
-- Real phone number in format: tel:+44XXXXXXXXXX
+### Task 2: Phone Number Swap — ✅ COMPLETE
+**Status:** Done. Live source already uses `tel:+442922523485` (029 2252 3485) across `index.html` and `services.html`. No further action required.
 
 ### Task 3: Production Deploy
 **What:** Push the site live via Netlify

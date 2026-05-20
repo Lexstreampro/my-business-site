@@ -76,7 +76,7 @@ Pick from this list when starting fresh. None of these touch closed Lane 1 work.
 
 - **Spine doc polish.** Tighten [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md) and [QUALITY_CONTROL.md](QUALITY_CONTROL.md) with the manual deploy rule (§5) and cache warning (§6) so they live in the spine, not only here.
 - **Higgsfield hero decision.** `origin/visual/higgsfield-asset-sprint` is intentionally preserved pending Shane's push/merge/prod-deploy approval (see §8b). When ready, open a dedicated Lane 1 thread — do not act on it from a docs lane.
-- **Lane 1 website improvement** with an explicit brief (e.g. real phone number swap for `tel:+441234567890`). Requires the user to provide the data before a Lane 1 thread can run.
+- **Lane 1 website improvement** with an explicit brief. Requires the user to provide the data (copy, assets, links) before a Lane 1 thread can run. (Note: the phone-number swap example previously listed here is complete — live source uses `tel:+442922523485`.)
 
 Do **not** start new website improvement work without an explicit Lane 1 brief. Previous branch-hygiene items (Lane 2B local merges, Lane 2C elite-protocol branch, Lane 2D remote orphans) are complete — see §8.
 

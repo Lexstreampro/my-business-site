@@ -10,6 +10,12 @@
 >
 > The session-handover content below remains valid history. Treat it as historical context, not as the operating rulebook.
 
+> ## ✅ Resolved Items (do not re-open from history below)
+>
+> The historical session log retains references that were open at the time of writing. These items are now closed:
+>
+> - **Phone number swap** — complete. Live source (`index.html`, `services.html`) uses `tel:+442922523485` (029 2252 3485). The old placeholder `tel:+441234567890` no longer appears anywhere in live source. Any mention below of "swap phone number" or `tel:+441234567890` is historical and must not be acted on.
+
 ---
 
 # TORQ Cymru — Session Handover

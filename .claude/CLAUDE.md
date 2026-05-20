@@ -16,7 +16,7 @@ Operational rules for this session → `.claude/rules/`
 
 ## Next Priorities
 1. Visual QA in browser at 390px / 768px / 1440px (screenshot verification)
-2. Swap phone placeholder: search `tel:+441234567890`
+2. ~~Swap phone placeholder~~ — ✅ complete; live source uses `tel:+442922523485` (029 2252 3485)
 3. Wire booking form (Formspree or Netlify Forms)
 4. Build services.html
 5. Deploy: `netlify deploy --prod`

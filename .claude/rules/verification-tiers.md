@@ -109,7 +109,7 @@ Run this **once per session**, after all building is done, before deploy. Purpos
   - Mobile: open on phone (or DevTools mobile emulation), scroll full page, check sticky CTA
 - [ ] **No sensitive data exposed** — search `index.html` for:
   - API keys (none should be there)
-  - Real phone number (should still be `tel:+441234567890` placeholder until real number confirmed)
+  - Real phone number (expected live value: `tel:+442922523485` / 029 2252 3485 — flag if any other number or the old `tel:+441234567890` placeholder appears)
   - Email addresses (none hardcoded except in appropriate forms)
 - [ ] **Netlify config reviewed** — `netlify.toml` has cache headers for assets (1 year immutable)
 

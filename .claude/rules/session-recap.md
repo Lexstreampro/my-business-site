@@ -64,6 +64,8 @@ After every session:
 
 ## Example (From Session 9)
 
+> **Historical illustration only.** The "Phone Number Swap" task shown below is closed — live source uses `tel:+442922523485`. This block is preserved purely as a format template; do not action the tasks inside it.
+
 ```
 ## START PROMPT — Session 10 (Email + Deploy)
 

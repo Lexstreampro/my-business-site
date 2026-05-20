@@ -73,7 +73,7 @@ netlify.toml       # Deployment config
 ### Known Issues
 - services.html: not yet built
 - Booking form: styled but not wired to backend
-- Phone number: still placeholder `tel:+441234567890` (needs real number)
+- Phone number: ✅ live — `tel:+442922523485` (029 2252 3485) wired in index.html + services.html
 
 ### Next Priority
 Build services.html using the locked image mapping in `.claude/rules/services-image-mapping-LOCKED.md`

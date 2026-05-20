@@ -106,7 +106,7 @@ Most common issue: filename case sensitivity or .png vs .jpg mismatch. Grep chec
 ## Next Session (Session 9)
 
 After images are fixed and deployed:
-1. Swap phone number placeholder (`tel:+441234567890` → real number)
+1. ~~Swap phone number placeholder~~ — ✅ complete; live source uses `tel:+442922523485`
 2. Wire booking form (Formspree or Netlify Forms)
 3. Run Tier 3 final QA
 4. Production deploy

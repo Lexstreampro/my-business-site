@@ -40,7 +40,7 @@ netlify deploy          # preview deploy
 | Update primary colour | Search `#C1121F` |
 | Update hover colour | Search `#8E0F19` |
 | Update background | Search `#111111` |
-| Swap phone number | Search `tel:+441234567890`, replace across all files |
+| Update phone number | Current live value: `tel:+442922523485` (029 2252 3485). Search `tel:+44` to find all occurrences before replacing. |
 | Wire booking form | Find `<form` in booking section, add `action="https://formspree.io/..."` |
 
 ## Asset Locations
