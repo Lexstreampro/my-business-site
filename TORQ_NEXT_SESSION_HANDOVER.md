@@ -10,14 +10,14 @@
 
 - **Repo:** `/Users/shanestokes/Desktop/my-business-site`
 - **Branch:** `master`
-- **Master tip:** `e43db20` — *docs: close lane 1 (deploy fix, plate verified, green-edge resolved)*
-- **Sync state:** `master == origin/master`. Working tree clean at closeout.
+- **Master tip:** `50309ea` — *docs: add TorQ Claude execution protocol*
+- **Sync state:** `master == origin/master`. Working tree clean.
 - **Recent commits (top 5):**
+  - `50309ea` docs: add TorQ Claude execution protocol
+  - `d1f3434` docs: add next-session handover with operator/lane rules
   - `e43db20` docs: close lane 1 (deploy fix, plate verified, green-edge resolved)
   - `4679b08` fix(work): remove green edge artefacts from recent work images
   - `d93e894` docs: log lane closure and deployment integrity
-  - `5268bb4` Merge PR #1 (workflow spine)
-  - `ee72da6` docs: add workflow spine and handover pointer
 
 ## 2. Current live truth
 
@@ -74,50 +74,31 @@ If any of those show the correct asset, production is fine and your default wind
 
 Pick from this list when starting fresh. None of these touch closed Lane 1 work.
 
-- **Resolve `docs/elite-claude-execution-protocol`** (Lane 2C). Branch has 1 unmerged commit, 1,043 lines across three docs. Options: merge to master, move file(s) to `~/.claude/rules/`, or discard. Decide before deleting.
-- **Branch hygiene cleanup** (Lane 2B continuation). Four LOW-risk merged branches are safe to delete locally — see §8.
-- **Remote branch hygiene pass** (Lane 2D, new). Five `origin/*` branches exist with no local tracking and unknown status — see §8.
-- **Spine doc polish.** Tighten [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md) and [QUALITY_CONTROL.md](QUALITY_CONTROL.md) based on this session's learnings (manual deploy rule, cache warning).
+- **Spine doc polish.** Tighten [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md) and [QUALITY_CONTROL.md](QUALITY_CONTROL.md) with the manual deploy rule (§5) and cache warning (§6) so they live in the spine, not only here.
+- **Higgsfield hero decision.** `origin/visual/higgsfield-asset-sprint` is intentionally preserved pending Shane's push/merge/prod-deploy approval (see §8b). When ready, open a dedicated Lane 1 thread — do not act on it from a docs lane.
+- **Lane 1 website improvement** with an explicit brief (e.g. real phone number swap for `tel:+441234567890`). Requires the user to provide the data before a Lane 1 thread can run.
 
-Do **not** start new website improvement work without an explicit Lane 1 brief.
+Do **not** start new website improvement work without an explicit Lane 1 brief. Previous branch-hygiene items (Lane 2B local merges, Lane 2C elite-protocol branch, Lane 2D remote orphans) are complete — see §8.
 
-## 8. Parked hygiene tasks (read-only; do nothing without approval)
+## 8. Branch & worktree state (verified post-cleanup)
 
-### 8a. Local merged branches — safe to delete later
+Branch hygiene is **largely complete**. Current verified state:
 
-All four have zero unique commits vs master:
+### 8a. Active worktree — do not touch unless explicitly closing the Gemini audit
 
-- `fix/services-mobile-affordance-breakpoint` (`9028fa6`)
-- `polish/homepage-card-hover-rhythm` (`b02706d`)
-- `polish/services-card-hover-rhythm` (`5574f6f`)
-- `polish/services-top-fold-spacing` (`6da2d99`)
+- `audit/gemini-live-site-review` (`8e005be`) checked out at `/Users/shanestokes/Desktop/torq-gemini-audit`. Separate Lane 1 audit context. Leave alone in any other lane.
 
-Proposed (not yet approved):
+### 8b. Preserved remote branch — Higgsfield hero, awaiting decision
 
-```bash
-git branch -d fix/services-mobile-affordance-breakpoint
-git branch -d polish/homepage-card-hover-rhythm
-git branch -d polish/services-card-hover-rhythm
-git branch -d polish/services-top-fold-spacing
-```
+- `origin/visual/higgsfield-asset-sprint` is intentionally retained pending Shane's push / merge / prod-deploy approval for the Seedream hero + T0RQ 2026 plate asset. **Do not delete, fetch-and-checkout, or merge** without an explicit Lane 1 Higgsfield brief.
 
-### 8b. Local branch with unmerged work — decide first
+### 8c. Completed cleanups (recorded for trace, no action remaining)
 
-- `docs/elite-claude-execution-protocol` (`7eeaad2`) — 1 commit, 1,043 lines, three docs. **Inspect, then decide. Do not delete blind.**
+- **Lane 2B (local merged branches):** `fix/services-mobile-affordance-breakpoint`, `polish/homepage-card-hover-rhythm`, `polish/services-card-hover-rhythm`, `polish/services-top-fold-spacing`, `fix/recent-work-green-edge-assets` — all deleted, both local and (where applicable) remote.
+- **Lane 2C (`docs/elite-claude-execution-protocol`):** resolved; content landed on master as `50309ea` ("docs: add TorQ Claude execution protocol"); local + remote branch gone.
+- **Lane 2D (remote orphans):** `origin/contact/footer-seo-schema`, `origin/fix/privacy-job-9-plate`, `origin/visual/services-component-foundation`, `origin/visual/services-density-pass` — all deleted.
 
-### 8c. Other worktree — do not touch
-
-- `audit/gemini-live-site-review` (`8e005be`) checked out at `/Users/shanestokes/Desktop/torq-gemini-audit`. Separate audit context. Leave alone.
-
-### 8d. Remote branches without local tracking — out of scope until briefed
-
-- `origin/contact/footer-seo-schema`
-- `origin/fix/privacy-job-9-plate`
-- `origin/visual/higgsfield-asset-sprint`
-- `origin/visual/services-component-foundation`
-- `origin/visual/services-density-pass`
-
-A future Lane 2D should classify these. Do not delete, fetch-and-checkout, or merge any of them without explicit brief.
+Net remaining: `master` + `audit/gemini-live-site-review` (local) and `origin/master` + `origin/visual/higgsfield-asset-sprint` (remote). Nothing else.
 
 ## 9. First command for next session
 
@@ -134,7 +115,7 @@ Confirm:
 
 - Branch is `master`.
 - Working tree is clean.
-- `master == origin/master`, tip = `e43db20` (or further if work has happened since this handover was written).
+- `master == origin/master`, tip = `50309ea` (or further if work has happened since this handover was last polished).
 - No surprise changes appeared during the gap between sessions.
 
 Then read this file, the spine docs (top of this file), and proceed only with a clearly stated lane and task.
