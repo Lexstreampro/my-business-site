@@ -41,6 +41,22 @@ Each entry: date, lane, action, outcome, follow-ups.
 - Mike's list parked for separate intake — not opened in this thread.
 - `origin/visual/higgsfield-asset-sprint` untouched throughout.
 
+**Lane 1 — Services image optimisation: completed, merged, pushed (pre-deploy)**
+
+- Timestamp: 2026-05-20 12:27 UK
+- Operator: Claude — Lane 1
+- Branch: `services-image-optimisation` (cut from `master` at `862667c`; fast-forward merged into master and pushed; redundant local branch retained pending cleanup decision)
+- Action: optimise the six referenced service-card PNGs into JPGs; swap `services.html` `src=` references; retain PNG originals on disk; update one verification screenshot artefact
+- Commit: `ed001ed perf(services): optimise service card images` — 8 files changed (`services.html` +6 / −6 = six `src=` swaps), six new JPGs added under `assets/services/` (`01-brakes-pads-a.jpg` 303 KB, `02-servicing.jpg` 381 KB, `03-diagnostics.jpg` 336 KB, `04-repairs.jpg` 331 KB, `05-battery.jpg` 366 KB, `07-fleet.jpg` 337 KB), and one updated tablet screenshot at `.claude/screenshots/services-768px-tablet.png`. The `01-brakes-pads-b.jpg` slot was already JPG and is unreferenced after the Premium Pass restructure.
+- Push: yes — `862667c..ed001ed master -> master`. `master == origin/master == ed001ed`.
+- Deploy: no. Production is still on the earlier Netlify deploy `6a0cf01a36fd6735753eaab7`; production is now behind `origin/master` by two website commits (`862667c` + `ed001ed`).
+- Result: services-page image payload for in-page references reduced from six 2.0–2.3 MB PNGs to six ~300–380 KB JPGs. Visual verification passed at 390 / 768 / 1440 before merge. Closes the "image optimisation parked" follow-up from the prior 2026-05-20 Services Premium Pass entry.
+- Next decision needed:
+  - Production deploy decision (separate Lane 1 brief; manual `netlify deploy --prod`).
+  - Local `services-image-optimisation` branch cleanup once deploy is settled (Lane 2B hygiene).
+  - `origin/visual/higgsfield-asset-sprint` remains protected — do not touch.
+  - PNG originals and the orphan `06-mot-prep.png` remain on disk; address only in a future dedicated asset-hygiene lane.
+
 ---
 
 ## 2026-05-19
