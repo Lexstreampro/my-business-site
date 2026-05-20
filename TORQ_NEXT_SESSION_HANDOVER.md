@@ -82,11 +82,11 @@ Do **not** start new website improvement work without an explicit Lane 1 brief. 
 
 ## 8. Branch & worktree state (verified post-cleanup)
 
-Branch hygiene is **largely complete**. Current verified state:
+Branch hygiene is **complete**. Current verified state:
 
-### 8a. Active worktree — do not touch unless explicitly closing the Gemini audit
+### 8a. Worktrees
 
-- `audit/gemini-live-site-review` (`8e005be`) checked out at `/Users/shanestokes/Desktop/torq-gemini-audit`. Separate Lane 1 audit context. Leave alone in any other lane.
+- Only the main repo at `/Users/shanestokes/Desktop/my-business-site` (on `master`). No auxiliary worktrees remain.
 
 ### 8b. Preserved remote branch — Higgsfield hero, awaiting decision
 
@@ -94,11 +94,12 @@ Branch hygiene is **largely complete**. Current verified state:
 
 ### 8c. Completed cleanups (recorded for trace, no action remaining)
 
+- **Lane 1 (Gemini audit closeout):** worktree `/Users/shanestokes/Desktop/torq-gemini-audit` removed; local branch `audit/gemini-live-site-review` deleted. The branch was fully contained in `master` at closeout.
 - **Lane 2B (local merged branches):** `fix/services-mobile-affordance-breakpoint`, `polish/homepage-card-hover-rhythm`, `polish/services-card-hover-rhythm`, `polish/services-top-fold-spacing`, `fix/recent-work-green-edge-assets` — all deleted, both local and (where applicable) remote.
 - **Lane 2C (`docs/elite-claude-execution-protocol`):** resolved; content landed on master as `50309ea` ("docs: add TorQ Claude execution protocol"); local + remote branch gone.
 - **Lane 2D (remote orphans):** `origin/contact/footer-seo-schema`, `origin/fix/privacy-job-9-plate`, `origin/visual/services-component-foundation`, `origin/visual/services-density-pass` — all deleted.
 
-Net remaining: `master` + `audit/gemini-live-site-review` (local) and `origin/master` + `origin/visual/higgsfield-asset-sprint` (remote). Nothing else.
+Net remaining: `master` (local) and `origin/master` + `origin/visual/higgsfield-asset-sprint` (remote). Nothing else.
 
 ## 9. First command for next session
 
