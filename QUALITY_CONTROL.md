@@ -64,6 +64,19 @@ Code inspection is insufficient. Visual proof is truth.
 
 ---
 
+## Privacy Image Checklist
+
+- [ ] No readable vehicle registration plates at 390px, 768px, or 1440px.
+- [ ] No exposed private addresses, admin locations, invoices, dashboards, or customer details.
+- [ ] Check reflections, background signage, mirrors, glass, and cropped edges.
+- [ ] Avoid obvious blur rectangles unless the only goal is emergency containment.
+- [ ] Prefer a natural 4:3 gallery-ready crop/reframe or approved replacement asset.
+- [ ] If creating candidates, keep review sheets and temporary files out of the final commit.
+- [ ] Use additive filenames for approved replacements; do not overwrite originals without approval.
+- [ ] Confirm the live page references the approved asset after deploy.
+
+---
+
 ## What Fails Quality
 
 - Half-finished work shipped to production.

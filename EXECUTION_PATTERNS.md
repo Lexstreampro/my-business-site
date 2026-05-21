@@ -68,6 +68,25 @@ See user memory for full deploy directory.
 
 ---
 
+## Privacy-Sensitive Image Workflow
+
+For any image that may expose a registration plate, address, private person, or other sensitive detail:
+
+1. Audit first: identify the exact asset, page reference, crop CSS, and affected breakpoints.
+2. Create a sibling review candidate instead of overwriting the live asset.
+3. Use review sheets and viewport previews before swapping any live reference.
+4. Prefer a natural crop/reframe or clean gallery-ready replacement over obvious blur boxes.
+5. Use an additive final filename, then change one explicit reference.
+6. Keep the original asset unless Shane approves removal.
+7. Commit only the final asset/reference swap after review.
+8. Push only after approval; deploy only after explicit deploy approval.
+9. Verify live with cache-busted HTML, direct asset checks, and 390px / 768px / 1440px screenshots.
+10. Log the issue, fix route, deploy ID, and reusable lesson.
+
+This pattern came from the `job-9-gallery-safe.jpeg` workflow and should become the default for privacy-sensitive website imagery.
+
+---
+
 ## Cold-Start Brief for a New Session
 
 A future session can boot from these five docs alone:

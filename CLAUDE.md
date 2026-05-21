@@ -40,6 +40,11 @@ python3 -m http.server 8000
 # Then visit http://localhost:8000
 ```
 
+**Visual Verification Tooling**
+- Playwright / `@playwright/test` is installed for local viewport and screenshot verification.
+- Keep generated screenshots in `/tmp` or another review-safe location unless Shane explicitly approves committing artefacts.
+- For visual/image/privacy work, verify at 390px, 768px, and 1440px before declaring GREEN.
+
 **Screenshot Comparison (Nick Saraev Method)**
 ```bash
 # Full-page screenshot for reference comparison

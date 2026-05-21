@@ -1,6 +1,6 @@
 # TORQ Cymru — Next Session Handover
 
-**Written:** 2026-05-20 (end of session)
+**Updated:** 2026-05-21 (workflow spine current-truth refresh)
 **For:** the next Claude Code / operator session
 **Read this first.** Then read the workflow spine: [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md) → [DECISIONS.md](DECISIONS.md) → [ISSUE_REGISTER.md](ISSUE_REGISTER.md) → [DAILY_LOG.md](DAILY_LOG.md) → [QUALITY_CONTROL.md](QUALITY_CONTROL.md). The large legacy `HANDOVER.md` is historical context only.
 
@@ -10,20 +10,20 @@
 
 - **Repo:** `/Users/shanestokes/Desktop/my-business-site`
 - **Branch:** `master`
-- **Master tip:** `50309ea` — *docs: add TorQ Claude execution protocol*
+- **Master tip:** `a1bb66e` — *docs: log playwright visual verification setup*
 - **Sync state:** `master == origin/master`. Working tree clean.
 - **Recent commits (top 5):**
-  - `50309ea` docs: add TorQ Claude execution protocol
-  - `d1f3434` docs: add next-session handover with operator/lane rules
-  - `e43db20` docs: close lane 1 (deploy fix, plate verified, green-edge resolved)
-  - `4679b08` fix(work): remove green edge artefacts from recent work images
-  - `d93e894` docs: log lane closure and deployment integrity
+  - `a1bb66e` docs: log playwright visual verification setup
+  - `25d62f6` chore(test): add playwright for visual verification
+  - `b64b317` docs: log job 9 privacy-safe image workflow
+  - `5b09542` fix(work): use privacy-safe job 9 gallery image
+  - `1fcc3cb` fix(services): restore logo image on services badges
 
 ## 2. Current live truth
 
 - **Production URL:** https://torqcymru.co.uk
-- **Netlify deploy ID:** `6a0cf01a36fd6735753eaab7`
-- **Unique deploy URL:** https://6a0cf01a36fd6735753eaab7--eloquent-gelato-d5fe9a.netlify.app
+- **Netlify deploy ID:** `6a0f5fd63599980bbf16b1a6`
+- **Unique deploy URL:** https://6a0f5fd63599980bbf16b1a6--eloquent-gelato-d5fe9a.netlify.app
 - Live matches source as of this closeout. No drift known.
 
 ## 3. Closed Lane 1 work (do not reopen)
@@ -32,8 +32,9 @@ The following were investigated, fixed, deployed, and verified live in this sess
 
 1. **Phase 3 / Phase 4 card hover effect** — live on services and homepage.
 2. **Recent Work green-edge bleed** — resolved on `job-1.jpeg`, `job-3.jpeg`, `job-4.jpeg`, `job-5.jpeg` (commit `4679b08`); live.
-3. **John's van registration plate (`job-9.jpeg`)** — verified unchanged and safe. No further patching needed.
-4. **Deploy integrity** — manual Netlify deploy confirmed live state matches master.
+3. **John's van Recent Work crop/privacy presentation** — resolved with additive asset `assets/work/job-9-gallery-safe.jpeg` (commit `5b09542`); original `assets/work/job-9.jpeg` retained. Live verification passed at 390px, 768px, and 1440px.
+4. **Playwright visual verification setup** — dependency installed and logged (`25d62f6`, `a1bb66e`) for future screenshot/viewport checks.
+5. **Deploy integrity** — manual Netlify deploy confirmed live state matches master.
 
 Lane 1 is **closed**.
 
@@ -74,19 +75,20 @@ If any of those show the correct asset, production is fine and your default wind
 
 Pick from this list when starting fresh. None of these touch closed Lane 1 work.
 
-- **Spine doc polish.** Tighten [EXECUTION_PATTERNS.md](EXECUTION_PATTERNS.md) and [QUALITY_CONTROL.md](QUALITY_CONTROL.md) with the manual deploy rule (§5) and cache warning (§6) so they live in the spine, not only here.
 - **Higgsfield hero decision.** `origin/visual/higgsfield-asset-sprint` is intentionally preserved pending Shane's push/merge/prod-deploy approval (see §8b). When ready, open a dedicated Lane 1 thread — do not act on it from a docs lane.
 - **Lane 1 website improvement** with an explicit brief. Requires the user to provide the data (copy, assets, links) before a Lane 1 thread can run. (Note: the phone-number swap example previously listed here is complete — live source uses `tel:+442922523485`.)
+- **Public website visual audit** using Playwright where useful. Keep screenshot artefacts out of commits unless explicitly approved.
 
 Do **not** start new website improvement work without an explicit Lane 1 brief. Previous branch-hygiene items (Lane 2B local merges, Lane 2C elite-protocol branch, Lane 2D remote orphans) are complete — see §8.
 
 ## 8. Branch & worktree state (verified post-cleanup)
 
-Branch hygiene is **complete**. Current verified state:
+Branch hygiene has been mostly completed, but auxiliary branches/worktrees may exist and must be checked before cleanup.
 
 ### 8a. Worktrees
 
-- Only the main repo at `/Users/shanestokes/Desktop/my-business-site` (on `master`). No auxiliary worktrees remain.
+- Main repo: `/Users/shanestokes/Desktop/my-business-site` on `master`.
+- Known auxiliary worktree at refresh time: `/Users/shanestokes/Desktop/my-business-site.worktrees/agents-chatgpt-overview` on `agents/chatgpt-overview`. Do not delete without explicit approval.
 
 ### 8b. Preserved remote branch — Higgsfield hero, awaiting decision
 
@@ -116,7 +118,7 @@ Confirm:
 
 - Branch is `master`.
 - Working tree is clean.
-- `master == origin/master`, tip = `50309ea` (or further if work has happened since this handover was last polished).
+- `master == origin/master`, tip = `a1bb66e` (or further if work has happened since this handover was last polished).
 - No surprise changes appeared during the gap between sessions.
 
 Then read this file, the spine docs (top of this file), and proceed only with a clearly stated lane and task.

@@ -8,6 +8,21 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ## 2026-05-21
 
+**Lane 1 — job-9 privacy-safe gallery image deployed and verified live**
+- Timestamp: 2026-05-21 20:41 BST
+- Operator: Codex
+- Surface: public website Recent Work image/privacy fix.
+- Action: production deploy of `master` to Netlify after Shane approval; live verification of the approved `job-9-gallery-safe.jpeg` image swap.
+- Commit deployed: `a1bb66e9f94dc6cbad730dfe0904f868924f8680` (master tip at deploy time). Relevant included commits:
+  - `5b09542 fix(work): use privacy-safe job 9 gallery image`
+  - `b64b317 docs: log job 9 privacy-safe image workflow`
+  - `25d62f6 chore(test): add playwright for visual verification`
+  - `a1bb66e docs: log playwright visual verification setup`
+- Deploy: yes — Netlify deploy ID `6a0f5fd63599980bbf16b1a6`. Production URL `https://torqcymru.co.uk`; unique deploy URL `https://6a0f5fd63599980bbf16b1a6--eloquent-gelato-d5fe9a.netlify.app`.
+- Live verification: cache-busted homepage HTML references `assets/work/job-9-gallery-safe.jpeg`; live image returned HTTP 200 and SHA-256 matched local; dimensions `1200x900`.
+- Viewport verification: 390px, 768px, and 1440px screenshots confirmed Mike's head visible and the old registration/redaction area out of frame.
+- Source hygiene: original `assets/work/job-9.jpeg` retained; temporary `assets/work/job-9-candidate.jpeg` removed before commit; no app repo touched.
+
 **Lane 2 — Playwright installed for public website visual verification**
 - Timestamp: 2026-05-21 20:47 BST
 - Operator: Codex

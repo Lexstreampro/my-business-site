@@ -72,6 +72,19 @@ When closing an issue: change status to `Resolved`, add resolution date and the 
 
 ---
 
+## ISSUE 6 — job-9 Recent Work crop/privacy presentation
+
+- **Status:** Resolved
+- **Priority:** Critical / Privacy + visual QA
+- **Opened:** 2026-05-21
+- **Resolved:** 2026-05-21
+- **Resolution:** Root cause was both asset-level and layout-level: the original `job-9.jpeg` was forced into the gallery's 4:3 card crop, which cut Mike's head on desktop and made the old registration/redaction area visually unsafe on mobile. Fix used an audit-first sibling candidate workflow, then committed additive asset `assets/work/job-9-gallery-safe.jpeg` and changed the single homepage Recent Work reference in `index.html` (commit `5b09542`). Original `assets/work/job-9.jpeg` was retained; temporary candidate `assets/work/job-9-candidate.jpeg` was removed before commit. Production deploy `6a0f5fd63599980bbf16b1a6` verified live at 390px, 768px, and 1440px.
+- **Notes:** User reported the John van Recent Work image cropped badly on desktop and still exposed the registration/privacy area on mobile.
+- **Owner / Lane:** Lane 2 (public website image/privacy workflow)
+- **Next action:** None. Re-open only with fresh visual evidence from the live site.
+
+---
+
 ## Adding New Issues
 
 Append to the bottom with the next available number. Format:
