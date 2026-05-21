@@ -6,6 +6,18 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ---
 
+## 2026-05-21
+
+**Lane 2 — Public Website Recent Work privacy-safe image workflow logged**
+- Timestamp: 2026-05-21 20:25 BST
+- Operator: Codex
+- Surface: public website Recent Work image/privacy fix.
+- Files/commit: `assets/work/job-9-gallery-safe.jpeg`, `index.html`; commit `5b09542 fix(work): use privacy-safe job 9 gallery image`.
+- Summary: replaced the `job-9` Recent Work reference with the approved privacy-safe 4:3 additive asset. Original issue was two-part: desktop gallery crop cut Mike's head, while mobile/privacy presentation made the old plate-redaction area visually obvious. Fix route: approved candidate became `job-9-gallery-safe.jpeg`; original `job-9.jpeg` was not overwritten.
+- Push completed: yes — `master == origin/master == 5b09542` after approval.
+- Deploy: no Netlify deploy was run.
+- Process lesson: for privacy-sensitive website images, use audit-first sibling candidate workflow with review sheets and viewport previews before swapping live references: audit -> sibling candidate -> review sheet/viewport previews -> additive final filename -> one-reference swap -> narrow commit -> push after approval -> no deploy unless separately approved.
+
 ## 2026-05-20
 
 **Lane 1 — Recent Work green-edge bleed: diagnosed, fixed, deployed, verified**
