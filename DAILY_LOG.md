@@ -8,6 +8,14 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ## 2026-05-21
 
+**Lane 2 — Playwright installed for public website visual verification**
+- Timestamp: 2026-05-21 20:47 BST
+- Operator: Codex
+- Surface: public website visual/layout/image verification tooling.
+- Files/commit: `package.json`, `package-lock.json`; commit `25d62f6 chore(test): add playwright for visual verification`.
+- Summary: added `@playwright/test` as a dev dependency so future website visual checks can use Playwright directly instead of falling back to Puppeteer-only scripts. Verified `playwright`, `@playwright/test`, and `npx playwright --version` locally.
+- Deploy: no Netlify deploy was run.
+
 **Lane 2 — Public Website Recent Work privacy-safe image workflow logged**
 - Timestamp: 2026-05-21 20:25 BST
 - Operator: Codex
