@@ -85,6 +85,17 @@ When closing an issue: change status to `Resolved`, add resolution date and the 
 
 ---
 
+## ISSUE 7 — Twilio Primary Compliance Profile pending; Air Landline WhatsApp/Twilio sender setup parked
+
+- **Status:** Waiting for external (Twilio compliance review)
+- **Priority:** High
+- **Opened:** 2026-05-30
+- **Notes:** Twilio Primary Compliance Profile (Business; TorQ Cymru Automotive Ltd; Industry: Automotive; business website https://torqcymru.co.uk; business phone +442922523485; authorised representative + business registration number present) is currently In Review / Pending review. Available funds £20.00. Profile detail page shows no missing-information warning, no rejection, no document request, and no resubmit button. The compliance-profile "assigned phone numbers" tab is for US numbers per Twilio's own page text, so it is not the path for the UK Air Landline. While the profile is under review: do NOT purchase a Twilio number, do NOT run Find-Your-Number, and do NOT click Add-Phone-Numbers on this profile.
+- **Owner / Lane:** Awaiting Twilio compliance approval. Then Lane 1 (controller-approved) for sender setup. Lane 1 must not act until approval lands.
+- **Next action:** When Twilio Primary Compliance Profile is approved, proceed to register/use the existing Air Landline number (+442922523485) for WhatsApp/Twilio sender setup using voice-call verification. SMS verification only if Air Landline is definitely confirmed to support SMS. Twilio-purchased number remains fallback only if Air Landline fails verification or proves unsuitable. Address may only be used where compliance forms legally require it; do not publish or expose the full business/admin address in public website or customer-facing copy.
+
+---
+
 ## Adding New Issues
 
 Append to the bottom with the next available number. Format:

@@ -6,6 +6,27 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ---
 
+## 2026-05-30
+
+**Lane 1 — Twilio Primary Compliance Profile state logged (documentation-only; no API/account changes)**
+- Timestamp: 2026-05-30 BST
+- Operator: Claude (Lane 1, documentation-only mode)
+- Surface: Twilio customer-communication foundations (WhatsApp/voice for TorQ Cymru). No code, no API calls, no number purchase, no deploy.
+- Twilio account state confirmed visually:
+  - Account active. Available funds shown as £20.00.
+  - Primary Compliance Profile exists. Type: Business. Status: In Review / Pending review.
+  - Legal business name shown as TorQ Cymru Automotive Ltd. Industry shown as Automotive.
+  - Business registration number present. Authorised representative present.
+  - Business website shown as https://torqcymru.co.uk. Business phone shown as +442922523485.
+  - No visible missing-information warning, rejection, document request, or resubmit button on the profile detail page.
+  - The "assigned phone numbers" tab inside the compliance profile area exists but Twilio page text indicates those slots are for US numbers, so this is not the Air Landline path.
+- Decision recorded: use the existing Air Landline (+442922523485) as the primary public TorQ Cymru business number for WhatsApp/Twilio sender setup. Twilio-purchased number remains fallback only if Air Landline fails verification or proves unsuitable.
+- Gate: Twilio Primary Compliance Profile approval. Until then: no Find-Your-Number flow, no Add-Phone-Numbers click on this profile, no Twilio number purchase, no Twilio/SendGrid/Meta API work.
+- Files/commit: docs-only appends to [DAILY_LOG.md](DAILY_LOG.md) and [ISSUE_REGISTER.md](ISSUE_REGISTER.md). No source code, env, secrets, or deploy settings touched. No deploy. Commit pending Shane/ChatGPT approval.
+- Parked follow-up: see [ISSUE 7](ISSUE_REGISTER.md).
+
+---
+
 ## 2026-05-21
 
 **Lane 1 — job-9 privacy-safe gallery image deployed and verified live**
