@@ -26,7 +26,7 @@ Tagline: **Precision Delivered.**
 - Preloader: `body.entered` class fires when dismissed, triggers hero animation
 - Logo preloaded: `<link rel="preload">` in head for instant render
 - Mobile nav: `lg:hidden` (shows on small screens only)
-- Booking form: styled but non-functional (wired in future session)
+- Booking form: functional — validates fields and writes the enquiry to Firebase (`push(ref(db, "jobs"))`), then shows a success card and redirects to the customer portal
 
 ## Development Workflow
 
@@ -121,7 +121,7 @@ npx puppeteer screenshot index.html --clip='{"x":0,"y":0,"width":1440,"height":8
 6. **Why TORQ Cymru** — 4-pillar grid: We Come To You | We Respect Time | We Do It Properly | We're Local
 7. **Recent Work Gallery** — 5 photos (job-1.jpeg through job-5.jpeg) in responsive grid (3 cols lg, 2 cols sm, 1 col mobile). Lazy-loaded. Hover scale animation.
 8. **Social Proof** — Real reviews: Jolene C., Casey McG., Millie G. with town names and "Verified Facebook Review" badges.
-9. **Booking Section** — "Request a Booking" form with Name / Vehicle / Issue / Postcode / Preferred Time fields → "Request Booking →" button. Non-functional (wired in future session).
+9. **Booking Section** — "Request a Booking" form with Name / Vehicle / Issue / Postcode / Preferred Time fields → "Request Booking →" button. Functional — submits the enquiry to Firebase and redirects to the customer portal.
 10. **App CTA Section** — "Download Our App — Coming Soon" with iOS + Android "Notify Me" buttons (dead, styled). Animated phone mockup.
 11. **Urgent CTA Block** — Red band: "Brake warning light? Need same-day support?" → [Call Now]
 12. **Coverage Map** — Custom inline SVG: South Wales landmass, 30-mile radius ring from Caerphilly Castle, 10 town markers, distance rings, "30 MILES" label. Leaflet.js backup.

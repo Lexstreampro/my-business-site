@@ -360,17 +360,17 @@
 ═══════════════════════════════════════ -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-tc-black/85 backdrop-blur-md border-b border-white/5">
   <div class="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-16">
-    <a href="#" class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3" aria-label="TORQ Cymru — home">
       <!-- Badge thumbnail desktop only — crops badly on mobile -->
       <div class="logo-bg hidden lg:block h-9 w-9 rounded-full border border-white/10 flex-shrink-0" role="img" aria-label="TORQ Cymru"></div>
       <span class="headline font-bold text-lg tracking-tight">TORQ <span class="text-tc-red">Cymru</span></span>
     </a>
     <div class="hidden lg:flex items-center gap-8 text-sm text-tc-alloy">
-      <a href="services.html" class="hover:text-tc-white transition-colors duration-200">Services</a>
-      <a href="#why"      class="hover:text-tc-white transition-colors duration-200">Why TORQ</a>
-      <a href="#work"     class="hover:text-tc-white transition-colors duration-200">Recent Work</a>
-      <a href="#reviews"  class="hover:text-tc-white transition-colors duration-200">Reviews</a>
-      <a href="#coverage" class="hover:text-tc-white transition-colors duration-200">Coverage</a>
+      <a href="services.html" class="hover:text-tc-white transition-colors duration-200 py-2 -my-2">Services</a>
+      <a href="#why"      class="hover:text-tc-white transition-colors duration-200 py-2 -my-2">Why TORQ</a>
+      <a href="#work"     class="hover:text-tc-white transition-colors duration-200 py-2 -my-2">Recent Work</a>
+      <a href="#reviews"  class="hover:text-tc-white transition-colors duration-200 py-2 -my-2">Reviews</a>
+      <a href="#coverage" class="hover:text-tc-white transition-colors duration-200 py-2 -my-2">Coverage</a>
     </div>
     <div class="flex items-center gap-3">
       <a href="#booking" class="hidden lg:inline-flex headline bg-tc-red hover:bg-tc-crimson text-white text-sm font-semibold px-5 py-2.5 rounded transition-colors duration-200" style="letter-spacing:-0.02em;">
@@ -921,7 +921,12 @@
       </div>
 
       <div class="p-8 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300 text-center" style="background:#1C1C1C;">
-        <div class="text-tc-red text-2xl mb-3">📸</div>
+        <div class="text-tc-red mb-3 flex justify-center" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+        </div>
         <p class="text-tc-white font-semibold text-lg mb-2">Real Work Photos</p>
         <p class="text-tc-alloy text-sm">Jobs we've completed across South Wales. See what proper workmanship looks like.</p>
       </div>
@@ -1170,7 +1175,7 @@
         </div>
 
         <!-- ADD-ONS -->
-        <div>
+        <div id="bf-addons-block">
           <label class="block text-tc-red text-xs mb-3 uppercase tracking-wide font-semibold" style="font-family:'Space Grotesk',sans-serif;">Add-ons (optional)</label>
           <div id="bf-addons-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;lg:grid-template-columns:repeat(3,1fr);">
             <div style="text-align:center;color:var(--tc-alloy);font-size:0.75rem;padding:20px;grid-column:1/-1;">Loading add-ons...</div>
@@ -1384,12 +1389,12 @@
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-6 lg:gap-x-8 gap-y-3 text-sm text-tc-alloy">
-        <a href="#services"  class="hover:text-tc-white transition-colors">Services</a>
-        <a href="#why"       class="hover:text-tc-white transition-colors">Why TORQ</a>
-        <a href="#work"      class="hover:text-tc-white transition-colors">Recent Work</a>
-        <a href="#reviews"   class="hover:text-tc-white transition-colors">Reviews</a>
-        <a href="#coverage"  class="hover:text-tc-white transition-colors">Coverage</a>
-        <a href="#booking"   class="hover:text-tc-white transition-colors">Book Now</a>
+        <a href="#services"  class="hover:text-tc-white transition-colors py-1 inline-block">Services</a>
+        <a href="#why"       class="hover:text-tc-white transition-colors py-1 inline-block">Why TORQ</a>
+        <a href="#work"      class="hover:text-tc-white transition-colors py-1 inline-block">Recent Work</a>
+        <a href="#reviews"   class="hover:text-tc-white transition-colors py-1 inline-block">Reviews</a>
+        <a href="#coverage"  class="hover:text-tc-white transition-colors py-1 inline-block">Coverage</a>
+        <a href="#booking"   class="hover:text-tc-white transition-colors py-1 inline-block">Book Now</a>
       </nav>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 pb-2 border-t" style="border-color:rgba(255,255,255,0.05);">
@@ -1607,10 +1612,14 @@
     }
 
     const addGrid = document.getElementById('bf-addons-grid');
+    const addBlock = document.getElementById('bf-addons-block');
     if (addGrid) {
       if (!addons.length) {
-        addGrid.innerHTML = `<div style="grid-column:1/-1;font-size:0.75rem;color:var(--tc-alloy);text-align:center;padding:20px;">No add-ons available.</div>`;
+        // No add-ons configured — hide the whole block rather than show an empty-state message
+        if (addBlock) addBlock.style.display = 'none';
+        addGrid.innerHTML = '';
       } else {
+        if (addBlock) addBlock.style.display = '';
         addGrid.innerHTML = addons.map(a => {
           const safe = String(a.name||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
           return `<label style="display:flex;align-items:center;gap:8px;padding:8px;background:#0d0d0d;border:1px solid rgba(255,255,255,0.08);border-radius:6px;cursor:pointer;transition:all 0.2s;" class="bf-addon-chip" data-name="${safe}">
