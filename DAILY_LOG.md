@@ -6,6 +6,18 @@ Each entry: date, lane, action, outcome, follow-ups.
 
 ---
 
+## 2026-06-06
+
+**Lane 1 — Website terms + app honesty + contact**
+- Added terms.html and linked the booking checkbox wording to the terms page.
+- Reworded inert App Store/Google Play buttons from "Notify me" to "Coming soon".
+- Confirmed public website email already uses torqcymruautomotive@gmail.com; internal SendGrid planning emails were left untouched.
+- Added WhatsApp click-to-chat links to the index.html and services.html footer contact blocks.
+- Outcome: implemented on branch content/terms-app-contact. No deploy.
+- Follow-up: PR review, then separate merge/deploy gate.
+
+---
+
 ## 2026-05-30
 
 **Lane 1 — Twilio Primary Compliance Profile state logged (documentation-only; no API/account changes)**
