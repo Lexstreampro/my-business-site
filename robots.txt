@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.torqcymru.co.uk/sitemap.xml
+Sitemap: https://torqcymru.co.uk/sitemap.xml
