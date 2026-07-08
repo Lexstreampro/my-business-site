@@ -1,7 +1,7 @@
 {
   "name": "TORQ Cymru Automotive",
   "short_name": "TORQ Cymru",
-  "description": "Premium mobile mechanic service across South Wales.",
+  "description": "Mobile mechanic based in Caerphilly, serving Cardiff, Newport and the South Wales valleys. Servicing, brakes, diagnostics, batteries and repairs at your home or workplace.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111111",
