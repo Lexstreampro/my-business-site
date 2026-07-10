@@ -1371,14 +1371,14 @@
             <li class="flex items-start gap-3"><svg class="w-4 h-4 text-tc-red mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Secure direct chat with your technician</li>
           </ul>
           <div class="flex flex-wrap gap-3">
-            <button type="button" disabled aria-disabled="true" class="flex items-center gap-3 px-5 py-3 rounded border cursor-not-allowed opacity-90" style="background:#0a0a0a; border-color:rgba(255,255,255,0.12);" aria-label="App Store app coming soon">
+            <button type="button" aria-disabled="true" data-portal-interest="app_store" class="flex items-center gap-3 px-5 py-3 rounded border cursor-not-allowed opacity-90" style="background:#0a0a0a; border-color:rgba(255,255,255,0.12);" aria-label="App Store app coming soon">
               <svg class="w-7 h-7 text-tc-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.86-3.08.43-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.43C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
               <span class="text-left">
                 <span class="block text-[10px] text-tc-alloy uppercase tracking-wider" style="font-family:'Space Grotesk',sans-serif;">Coming soon</span>
                 <span class="block headline text-sm text-tc-white" style="letter-spacing:-0.02em;">App Store</span>
               </span>
             </button>
-            <button type="button" disabled aria-disabled="true" class="flex items-center gap-3 px-5 py-3 rounded border cursor-not-allowed opacity-90" style="background:#0a0a0a; border-color:rgba(255,255,255,0.12);" aria-label="Google Play app coming soon">
+            <button type="button" aria-disabled="true" data-portal-interest="google_play" class="flex items-center gap-3 px-5 py-3 rounded border cursor-not-allowed opacity-90" style="background:#0a0a0a; border-color:rgba(255,255,255,0.12);" aria-label="Google Play app coming soon">
               <svg class="w-7 h-7" viewBox="0 0 24 24"><path fill="#34a853" d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z"/><path fill="#fbbc04" d="M16.81 15.02 6.05 21.34l8.43-8.43z"/><path fill="#ea4335" d="M20.16 10.81c.69.39.69 1.49 0 1.88l-3.35 1.93-2.84-2.83 2.84-2.84z"/><path fill="#4285f4" d="M14.48 11.79 6.05 3.36l10.76 6.32z"/></svg>
               <span class="text-left">
                 <span class="block text-[10px] text-tc-alloy uppercase tracking-wider" style="font-family:'Space Grotesk',sans-serif;">Coming soon</span>
@@ -1511,6 +1511,8 @@
         <a href="#reviews"   class="hover:text-tc-white transition-colors py-1 inline-block">Reviews</a>
         <a href="#coverage"  class="hover:text-tc-white transition-colors py-1 inline-block">Coverage</a>
         <a href="#booking"   class="hover:text-tc-white transition-colors py-1 inline-block">Book Now</a>
+        <a href="privacy.html" class="hover:text-tc-white transition-colors py-1 inline-block">Privacy</a>
+        <button type="button" data-cookie-settings class="hover:text-tc-white transition-colors py-1 inline-block text-left">Cookie settings</button>
       </nav>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 pb-2 border-t" style="border-color:rgba(255,255,255,0.05);">
@@ -1538,7 +1540,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-6 mt-8 border-t text-center md:text-left text-xs text-tc-alloy" style="border-color:rgba(255,255,255,0.05);">
       <span>© 2026 TORQ Cymru Automotive. All rights reserved.</span>
       <span class="md:text-center">TORQ CYMRU AUTOMOTIVE LTD · Company number: 17193418</span>
-      <span class="md:text-right">Proudly Welsh. Professionally Driven.</span>
+      <span class="md:text-right"><a href="privacy.html" class="hover:text-tc-white transition-colors">Privacy</a> · <button type="button" data-cookie-settings class="hover:text-tc-white transition-colors">Cookie settings</button></span>
     </div>
   </div>
 </footer>
@@ -1552,6 +1554,13 @@
   <a href="#booking" class="headline flex-1 text-center bg-tc-red hover:bg-tc-crimson text-white font-semibold py-3 rounded text-sm transition-colors" style="letter-spacing:-0.02em;">Book Now</a>
 </div>
 
+
+<script>
+  window.TORQ_ANALYTICS_CONFIG = window.TORQ_ANALYTICS_CONFIG || {};
+  window.TORQ_ANALYTICS_CONFIG.measurementId = "G-K7QQQF1ER2";
+</script>
+<script src="assets/js/analytics.js" defer></script>
+<script src="assets/js/consent.js" defer></script>
 
 <!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -1855,6 +1864,19 @@
     return BOOKING_CONFIG.copy.genericError;
   }
 
+  function mapErrorCategory(err) {
+    const code = (err && (err.code || err.message)) || "";
+    if (/validation/i.test(code)) return "validation";
+    if (/network|unavailable|auth\/network/i.test(code)) return "network";
+    if (/PERMISSION_DENIED|permission-denied|internal|server/i.test(code)) return "server";
+    return "unknown";
+  }
+
+  function trackBookingEvent(name, params) {
+    if (!window.TorqAnalytics || typeof window.TorqAnalytics.track !== "function") return;
+    window.TorqAnalytics.track(name, Object.assign({ page_path: location.pathname + location.hash }, params || {}));
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearError();
@@ -1876,24 +1898,24 @@
     const confirmTerms = document.getElementById("bf-confirm-terms").checked;
 
     // Check required fields
-    if (!name) { showError("Please enter your name."); return; }
-    if (!phone) { showError("Please enter your phone number."); return; }
-    if (!email) { showError("Please enter your email address."); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError("Please enter a valid email address."); return; }
-    if (!reg) { showError("Please enter your vehicle registration."); return; }
-    if (!make) { showError("Please enter your vehicle make."); return; }
-    if (!model) { showError("Please enter your vehicle model."); return; }
-    if (!year || !/^[0-9]{4}$/.test(year)) { showError("Please enter a valid 4-digit year."); return; }
-    if (!fuel) { showError("Please select a fuel type."); return; }
-    if (!postcode) { showError("Please enter your postcode."); return; }
+    if (!name) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your name."); return; }
+    if (!phone) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your phone number."); return; }
+    if (!email) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your email address."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter a valid email address."); return; }
+    if (!reg) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your vehicle registration."); return; }
+    if (!make) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your vehicle make."); return; }
+    if (!model) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your vehicle model."); return; }
+    if (!year || !/^[0-9]{4}$/.test(year)) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter a valid 4-digit year."); return; }
+    if (!fuel) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please select a fuel type."); return; }
+    if (!postcode) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please enter your postcode."); return; }
 
     // Check services (must select at least one)
     const selectedServices = [...document.querySelectorAll('input[name="services"]:checked')].map(c => c.value);
-    if (!selectedServices.length) { showError("Please select at least one service."); return; }
+    if (!selectedServices.length) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please select at least one service."); return; }
 
     // Check confirmations
-    if (!confirmLocation) { showError("Please confirm this is the correct address for the work."); return; }
-    if (!confirmTerms) { showError("Please accept the terms & conditions."); return; }
+    if (!confirmLocation) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please confirm this is the correct address for the work."); return; }
+    if (!confirmTerms) { trackBookingEvent("booking_submit_error", { error_category: "validation" }); showError("Please accept the terms & conditions."); return; }
 
     // Get add-ons (optional)
     const selectedAddons = [...document.querySelectorAll('input[name="addons"]:checked')].map(c => ({ name: c.value, price: 0 }));
@@ -1937,6 +1959,7 @@
       await authReady;
       const newRef = push(ref(db, "jobs"));
       await set(newRef, payload);
+      trackBookingEvent("booking_submit_success", { service_count: selectedServices.length, has_addons: !!selectedAddons.length });
 
       form.classList.add("hidden");
       successCard.classList.remove("hidden");
@@ -1948,6 +1971,7 @@
       }, 2000);
     } catch (err) {
       console.error("[booking] write failed", err);
+      trackBookingEvent("booking_submit_error", { error_category: mapErrorCategory(err) });
       showError(mapError(err));
       submitBtn.disabled = false;
       submitBtn.textContent = originalLabel;
