@@ -17,14 +17,16 @@
   <meta property="og:description" content="Mobile servicing, brakes, diagnostics, repairs, batteries and fleet support across South Wales. Transparent quotes, at your door.">
   <meta property="og:url" content="https://torqcymru.co.uk/services.html">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:image" content="https://torqcymru.co.uk/assets/brand/torq-logo-website-1024-transparent.png">
-  <meta property="og:image:alt" content="TORQ Cymru Automotive logo">
+  <meta property="og:image" content="https://torqcymru.co.uk/assets/brand/torq-og-social-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TORQ Cymru Automotive mobile mechanics across South Wales">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mobile Mechanic Services in South Wales — TORQ Cymru">
   <meta name="twitter:description" content="Mobile servicing, brakes, diagnostics, repairs, batteries and fleet support across South Wales. Transparent quotes, at your door.">
-  <meta name="twitter:image" content="https://torqcymru.co.uk/assets/brand/torq-logo-website-1024-transparent.png">
+  <meta name="twitter:image" content="https://torqcymru.co.uk/assets/brand/torq-og-social-1200x630.png">
 
   <link rel="icon" type="image/x-icon" href="/assets/brand/torq-favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/torq-app-icon-180.png">
@@ -95,6 +97,112 @@
     #mobile-menu[aria-hidden="false"] #menu-panel {
       transform: translateX(0);
     }
+
+    /* ═══════════════════════════════════════════════════════
+       VISUAL PASS 1 (2026-07-10) — depth · focus · reduced-motion · CTA feedback
+       Additive only. No content, layout, palette, or structure change.
+       ═══════════════════════════════════════════════════════ */
+
+    /* ── 1. Card depth system ──────────────────────────────
+       Targets the shared card fingerprint (border-white/5 + hover:border-tc-red/30)
+       so NO markup change is required. Grounded default depth + inset top highlight;
+       desktop-pointer-only 2px hover lift. Cards never move on touch. */
+    .border-white\/5.hover\:border-tc-red\/30 {
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.45),
+        0 12px 28px -14px rgba(0,0,0,0.60),
+        inset 0 1px 0 rgba(255,255,255,0.045);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .border-white\/5.hover\:border-tc-red\/30:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 2px 4px rgba(0,0,0,0.50),
+          0 18px 38px -14px rgba(0,0,0,0.70),
+          inset 0 1px 0 rgba(255,255,255,0.07);
+      }
+    }
+
+    /* ── 2. Branded :focus-visible ─────────────────────────
+       Light ring (visible on red/dark/image) + red brand halo (visible on light/steel).
+       Never colour-alone. Checkboxes/radios excluded — booking chips keep their own ring. */
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    summary:focus-visible,
+    input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid #F8F8F8;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(193,18,31,0.55);
+      border-radius: 4px;
+    }
+
+    /* ── 4. CTA hover + pressed feedback ───────────────────
+       Primary (bg-tc-red), sticky Call (bg-tc-graphite link), ghost (steel border).
+       Adds a transform-capable transition; hover lift is pointer-only; press is 1px down. */
+    a.bg-tc-red, button.bg-tc-red,
+    a.bg-tc-graphite,
+    a.border.text-tc-steel {
+      transition:
+        background-color 0.2s cubic-bezier(0.4,0,0.2,1),
+        color 0.2s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.2s cubic-bezier(0.4,0,0.2,1),
+        transform 0.12s cubic-bezier(0.2,0,0,1),
+        box-shadow 0.15s cubic-bezier(0.2,0,0,1);
+      -webkit-tap-highlight-color: transparent;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      a.bg-tc-red:hover,
+      button.bg-tc-red:not(:disabled):hover,
+      a.bg-tc-graphite:hover,
+      a.border.text-tc-steel:hover {
+        transform: translateY(-1px);
+      }
+      a.bg-tc-red:hover,
+      button.bg-tc-red:not(:disabled):hover {
+        box-shadow: 0 6px 18px -6px rgba(193,18,31,0.45);
+      }
+    }
+    a.bg-tc-red:active,
+    button.bg-tc-red:not(:disabled):active,
+    a.bg-tc-graphite:active,
+    a.border.text-tc-steel:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+    button.bg-tc-red:disabled,
+    button.bg-tc-red[disabled] {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* ── 3. Reduced motion ─────────────────────────────────
+       Near-instant transitions/animations; reveal forced visible; decorative loops off.
+       Nothing hidden; menu, booking, sticky bar and forms all keep functionality.
+       Placed last so it overrides the hover/active transforms above. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-content { opacity: 1 !important; animation: none !important; }
+      .castle { animation: none !important; opacity: 0.35 !important; }
+      .flame-pulse, .phone-glow, .pl-halo, .pl-logo, .pl-arc, .pl-hint { animation: none !important; }
+      .border-white\/5.hover\:border-tc-red\/30:hover,
+      .border-white\/5.hover\:border-tc-red\/30:active,
+      a.bg-tc-red:hover, button.bg-tc-red:hover,
+      a.bg-tc-graphite:hover, a.border.text-tc-steel:hover,
+      a.bg-tc-red:active, button.bg-tc-red:active,
+      a.bg-tc-graphite:active, a.border.text-tc-steel:active {
+        transform: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>

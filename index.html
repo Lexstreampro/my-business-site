@@ -17,14 +17,16 @@
   <meta property="og:description" content="Mobile mechanic based in Caerphilly, serving Cardiff, Newport and the South Wales valleys. Servicing, brakes, diagnostics, batteries and repairs at your home or workplace.">
   <meta property="og:url" content="https://torqcymru.co.uk/">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:image" content="https://torqcymru.co.uk/assets/brand/torq-logo-website-1024-transparent.png">
-  <meta property="og:image:alt" content="TORQ Cymru Automotive logo">
+  <meta property="og:image" content="https://torqcymru.co.uk/assets/brand/torq-og-social-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="TORQ Cymru Automotive mobile mechanics across South Wales">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="TORQ Cymru Automotive — Mobile Mechanic South Wales">
   <meta name="twitter:description" content="Mobile mechanic based in Caerphilly, serving Cardiff, Newport and the South Wales valleys. Servicing, brakes, diagnostics, batteries and repairs at your home or workplace.">
-  <meta name="twitter:image" content="https://torqcymru.co.uk/assets/brand/torq-logo-website-1024-transparent.png">
+  <meta name="twitter:image" content="https://torqcymru.co.uk/assets/brand/torq-og-social-1200x630.png">
 
   <script type="application/ld+json">
   {
@@ -274,6 +276,112 @@
       color: #F8F8F8 !important;
       border-color: rgba(255,255,255,0.1) !important;
     }
+
+    /* ═══════════════════════════════════════════════════════
+       VISUAL PASS 1 (2026-07-10) — depth · focus · reduced-motion · CTA feedback
+       Additive only. No content, layout, palette, or structure change.
+       ═══════════════════════════════════════════════════════ */
+
+    /* ── 1. Card depth system ──────────────────────────────
+       Targets the shared card fingerprint (border-white/5 + hover:border-tc-red/30)
+       so NO markup change is required. Grounded default depth + inset top highlight;
+       desktop-pointer-only 2px hover lift. Cards never move on touch. */
+    .border-white\/5.hover\:border-tc-red\/30 {
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.45),
+        0 12px 28px -14px rgba(0,0,0,0.60),
+        inset 0 1px 0 rgba(255,255,255,0.045);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .border-white\/5.hover\:border-tc-red\/30:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 2px 4px rgba(0,0,0,0.50),
+          0 18px 38px -14px rgba(0,0,0,0.70),
+          inset 0 1px 0 rgba(255,255,255,0.07);
+      }
+    }
+
+    /* ── 2. Branded :focus-visible ─────────────────────────
+       Light ring (visible on red/dark/image) + red brand halo (visible on light/steel).
+       Never colour-alone. Checkboxes/radios excluded — booking chips keep their own ring. */
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    summary:focus-visible,
+    input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid #F8F8F8;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(193,18,31,0.55);
+      border-radius: 4px;
+    }
+
+    /* ── 4. CTA hover + pressed feedback ───────────────────
+       Primary (bg-tc-red), sticky Call (bg-tc-graphite link), ghost (steel border).
+       Adds a transform-capable transition; hover lift is pointer-only; press is 1px down. */
+    a.bg-tc-red, button.bg-tc-red,
+    a.bg-tc-graphite,
+    a.border.text-tc-steel {
+      transition:
+        background-color 0.2s cubic-bezier(0.4,0,0.2,1),
+        color 0.2s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.2s cubic-bezier(0.4,0,0.2,1),
+        transform 0.12s cubic-bezier(0.2,0,0,1),
+        box-shadow 0.15s cubic-bezier(0.2,0,0,1);
+      -webkit-tap-highlight-color: transparent;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      a.bg-tc-red:hover,
+      button.bg-tc-red:not(:disabled):hover,
+      a.bg-tc-graphite:hover,
+      a.border.text-tc-steel:hover {
+        transform: translateY(-1px);
+      }
+      a.bg-tc-red:hover,
+      button.bg-tc-red:not(:disabled):hover {
+        box-shadow: 0 6px 18px -6px rgba(193,18,31,0.45);
+      }
+    }
+    a.bg-tc-red:active,
+    button.bg-tc-red:not(:disabled):active,
+    a.bg-tc-graphite:active,
+    a.border.text-tc-steel:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+    button.bg-tc-red:disabled,
+    button.bg-tc-red[disabled] {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* ── 3. Reduced motion ─────────────────────────────────
+       Near-instant transitions/animations; reveal forced visible; decorative loops off.
+       Nothing hidden; menu, booking, sticky bar and forms all keep functionality.
+       Placed last so it overrides the hover/active transforms above. */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero-content { opacity: 1 !important; animation: none !important; }
+      .castle { animation: none !important; opacity: 0.35 !important; }
+      .flame-pulse, .phone-glow, .pl-halo, .pl-logo, .pl-arc, .pl-hint { animation: none !important; }
+      .border-white\/5.hover\:border-tc-red\/30:hover,
+      .border-white\/5.hover\:border-tc-red\/30:active,
+      a.bg-tc-red:hover, button.bg-tc-red:hover,
+      a.bg-tc-graphite:hover, a.border.text-tc-steel:hover,
+      a.bg-tc-red:active, button.bg-tc-red:active,
+      a.bg-tc-graphite:active, a.border.text-tc-steel:active {
+        transform: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -511,8 +619,8 @@
   <div class="max-w-[1200px] mx-auto px-6 py-5">
     <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-6 gap-y-3 text-sm">
       <div class="flex items-center gap-2 text-tc-steel">
-        <span class="text-yellow-400 tracking-tighter">★★★★★</span>
-        <span class="text-tc-alloy">5-Star Rated</span>
+        <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        5-Star Google Review
       </div>
       <div class="flex items-center gap-2 text-tc-steel">
         <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -523,12 +631,12 @@
         Transparent Quotes
       </div>
       <div class="flex items-center gap-2 text-tc-steel">
-        <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        Qualified Technicians
+        <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        We Come to You
       </div>
       <div class="flex items-center gap-2 text-tc-steel">
-        <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        Fast Response
+        <svg class="w-4 h-4 text-tc-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        Clear Communication
       </div>
     </div>
   </div>
@@ -916,9 +1024,8 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
       <div class="p-8 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300 text-center" style="background:#1C1C1C;">
-        <div class="text-yellow-400 text-2xl mb-3">★★★★★</div>
-        <p class="text-tc-white font-semibold text-lg mb-2">Real Reviews</p>
-        <p class="text-tc-alloy text-sm">Verified feedback from drivers who've experienced our service. See our reviews section below.</p>
+        <p class="text-tc-white font-semibold text-lg mb-2">Real Customer Reviews</p>
+        <p class="text-tc-alloy text-sm">Feedback from drivers who've used TORQ Cymru. See their reviews below.</p>
       </div>
 
       <div class="p-8 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300 text-center" style="background:#1C1C1C;">
@@ -1056,45 +1163,52 @@
       <p class="text-tc-red text-xs font-semibold uppercase tracking-widest mb-3" style="font-family:'Space Grotesk',sans-serif;">Reviews</p>
       <h2 class="headline font-bold text-tc-white" style="font-size:clamp(2rem,4vw,2.75rem); letter-spacing:-0.03em;">Trusted across Wales.</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal">
       <div class="p-7 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C;">
         <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
+        <p class="text-tc-steel leading-relaxed mb-6">"Couldn’t recommend this mechanic enough. He replaced the clutch on my van and did a brilliant job. Honest, reliable, and kept me updated throughout. The van drives like new now, and the price was very reasonable too. I’ll definitely be using him again. Thanks!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-tc-graphite border flex items-center justify-center text-tc-alloy text-sm font-semibold flex-shrink-0" style="border-color:rgba(255,255,255,0.1);">JR</div>
+          <div>
+            <div class="text-tc-white text-sm font-semibold">Jordan Rigby</div>
+            <div class="text-tc-alloy text-xs">
+              Google Review
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-7 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C;">
         <p class="text-tc-steel leading-relaxed mb-6">"I have had a few jobs done on my car and never had a problem. Always professional and reliable."</p>
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-tc-graphite border flex items-center justify-center text-tc-alloy text-sm font-semibold flex-shrink-0" style="border-color:rgba(255,255,255,0.1);">JC</div>
           <div>
             <div class="text-tc-white text-sm font-semibold">Jolene C.</div>
-            <div class="text-tc-alloy text-xs flex items-center gap-1">
-              <svg class="w-3 h-3 text-tc-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              Verified Facebook Review
+            <div class="text-tc-alloy text-xs">
+              Facebook Review
             </div>
           </div>
         </div>
       </div>
       <div class="p-7 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C;">
-        <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
         <p class="text-tc-steel leading-relaxed mb-6">"Helped me with replacing my brake pads — quick and very helpful. 10/10, thank you!"</p>
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-tc-graphite border flex items-center justify-center text-tc-alloy text-sm font-semibold flex-shrink-0" style="border-color:rgba(255,255,255,0.1);">CM</div>
           <div>
             <div class="text-tc-white text-sm font-semibold">Casey McG.</div>
-            <div class="text-tc-alloy text-xs flex items-center gap-1">
-              <svg class="w-3 h-3 text-tc-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              Verified Facebook Review
+            <div class="text-tc-alloy text-xs">
+              Facebook Review
             </div>
           </div>
         </div>
       </div>
       <div class="p-7 rounded border border-white/5 hover:border-tc-red/30 transition-all duration-300" style="background:#1C1C1C;">
-        <div class="text-yellow-400 text-sm mb-4">★★★★★</div>
         <p class="text-tc-steel leading-relaxed mb-6">"Gearbox oil leak on a bank holiday — they came straight out. Went out of their way, can't fault them. Got ball joint and brake pads booked in with them now."</p>
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-tc-graphite border flex items-center justify-center text-tc-alloy text-sm font-semibold flex-shrink-0" style="border-color:rgba(255,255,255,0.1);">MG</div>
           <div>
             <div class="text-tc-white text-sm font-semibold">Millie G.</div>
-            <div class="text-tc-alloy text-xs flex items-center gap-1">
-              <svg class="w-3 h-3 text-tc-green" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              Verified Facebook Review
+            <div class="text-tc-alloy text-xs">
+              Facebook Review
             </div>
           </div>
         </div>
@@ -1239,6 +1353,7 @@
 
         <!-- Copy column -->
         <div class="lg:col-span-3">
+          <img src="assets/brand/torq-flame-q-portal-512.png" alt="TORQ Cymru Flame-Q" width="112" height="112" loading="lazy" class="block mb-5 w-[96px] h-[96px] lg:w-[112px] lg:h-[112px]" style="filter:drop-shadow(0 6px 22px rgba(193,18,31,0.30));">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-5 lg:mb-6 border rounded text-xs text-tc-red" style="border-color:rgba(193,18,31,0.4); background:rgba(193,18,31,0.06); font-family:'Space Grotesk',sans-serif; letter-spacing:0.07em; text-transform:uppercase;">
             <span class="w-1.5 h-1.5 rounded-full bg-tc-red" style="animation:pulse 2s infinite;"></span>
             Coming Soon
