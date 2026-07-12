@@ -37,7 +37,7 @@
   <main class="max-w-[820px] mx-auto px-6 py-12 lg:py-16 terms-body">
     <p class="text-xs uppercase tracking-widest mb-3" style="color:#C1121F; font-family:'Space Grotesk',sans-serif;">Privacy &amp; Cookies</p>
     <h1 class="headline font-bold mb-3" style="font-size:clamp(1.8rem,4vw,2.6rem); color:#F8F8F8;">Privacy &amp; Cookies</h1>
-    <p style="color:#8D9398; font-size:0.92rem;">Last updated: 2026-07-10. This page explains how TORQ Cymru Automotive uses optional Google Analytics and how booking/contact details are kept separate from analytics.</p>
+    <p style="color:#8D9398; font-size:0.92rem;">Last updated: 2026-07-12. This page explains how TORQ Cymru Automotive uses optional Google Analytics and how booking/contact details are kept separate from analytics.</p>
 
     <div class="callout">
       <p style="margin:0;"><strong style="color:#F8F8F8;">Short version:</strong> analytics on this website is optional. It stays off unless you accept it. Rejecting analytics does not block booking, calling, WhatsApp, or normal site use.</p>
@@ -65,7 +65,7 @@
       <li>referral source, including traffic from Facebook</li>
       <li>clicks on call, WhatsApp, booking, and portal-interest actions</li>
       <li>service-page engagement</li>
-      <li>booking-start, booking-success, and booking-error events in non-PII form</li>
+      <li>booking-start events in non-PII form</li>
     </ul>
     <p>Analytics is not used here for advertising, remarketing, cross-site profiling, Google Signals, or advertising personalisation.</p>
 
@@ -97,10 +97,7 @@
     <p>When analytics is accepted, Google acts as the analytics provider for the website through Google Analytics 4. You can read more about how Google handles Analytics data in Google's own documentation and privacy information.</p>
 
     <h2>Analytics data retention</h2>
-    <p>The live GA4 data-retention setting will be stated here once the TorQ GA4 property is created and configured. Until that step is completed, analytics remains inactive on production.</p>
-
-    <h2>Draft status</h2>
-    <p>This privacy wording has been prepared for review as part of the TorQ analytics and consent implementation lane. It must stay aligned with the final approved GA4 configuration before any production activation.</p>
+    <p>When analytics is accepted, event-level Google Analytics data for this website is retained by Google for 2 months, after which it is automatically deleted. Aggregated, non-identifying reporting may persist for longer within Google Analytics. You can withdraw consent at any time using the Cookie settings control.</p>
   </main>
 
   <footer class="border-t py-8" style="border-color:rgba(255,255,255,0.08);">
@@ -117,7 +114,7 @@
     window.TORQ_ANALYTICS_CONFIG = window.TORQ_ANALYTICS_CONFIG || {};
     window.TORQ_ANALYTICS_CONFIG.measurementId = "G-K7QQQF1ER2";
 </script>
-  <script src="assets/js/analytics.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
 </body>
 </html>
