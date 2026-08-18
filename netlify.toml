@@ -1,6 +1,29 @@
 [build]
   publish = "."
 
+# Canonical URL consolidation.
+# Netlify serves both /terms and /terms.html with a 200, so Google indexed both
+# (Search Console 30 Jun-16 Aug 2026: /terms 105 impressions, /terms.html 33).
+# Every internal link and every <link rel="canonical"> already points at the
+# .html form, so these 301s make the served URL agree with the canonical.
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
